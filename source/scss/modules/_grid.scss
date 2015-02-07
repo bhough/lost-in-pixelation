@@ -1,0 +1,100 @@
+/***** Grid System Variables *****/
+
+$baseWidth: 1680px;
+$baseColumns: 24;
+$baseColumnWidth: ( 100% / $baseColumns );
+$baseGutterWidth: 20px;
+$outsideGutters: true;
+
+/***** Grid System *****/
+
+// Box Sizing Border-Box for all elements
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+// Base Row Styling
+
+.row {
+    width: 100%;
+    max-width: $baseWidth;
+    margin: 0 auto;
+
+    // If Outer Gutters are set to true
+
+    @if $outsideGutters == true {
+
+        padding: 0 ( $baseGutterWidth / 2 );
+
+    // If Outer Gutters are set to false
+
+    } @else {
+        padding: 0;
+    }
+
+    // Micro Clear Fix
+
+    &:after {
+        @include clearfix;
+    }
+
+    // Nested Rows
+
+    .row {
+        width: auto;
+        min-width: 0;
+        max-width: none;
+        padding: 0;
+
+        // If Outer Gutters are set to true
+
+        @if $outsideGutters == true {
+
+            margin: 0 ( $baseGutterWidth / -2 );
+        }
+    }
+}
+
+// Base Column Style
+
+[class*="column-"] {
+    min-height: 1px;
+    padding: 0 ( $baseGutterWidth / 2 );
+    position: relative;
+    float: left;
+}
+
+// Laptop & Desktop (viewport widths larger than 1100px)
+
+@for $i from 1 through $baseColumns {
+
+    .column-#{$i} {
+        width: ( $baseColumnWidth * $i);
+    }
+
+    .prepend-#{$i} {
+        margin-left: ( $baseColumnWidth * $i );
+    }
+
+    .append-#{$i} {
+        margin-right: ( $baseColumnWidth * $i );
+    }
+
+    // Visibility Helper Classes
+
+    @media only screen and (min-width: 1101px) {
+
+        // Visibility Helper Classes
+
+        .desktop-hidden {
+            display: none !important;
+        }
+
+        .desktop-visible {
+            display: block !important;
+        }
+
+    }
+    
+}

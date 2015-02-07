@@ -1,0 +1,14 @@
+/***** Clearfix *****/
+
+@mixin clearfix {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/***** Colors *****/
+
+$black: #292929;
+$grey: #3C3C3C;
+$lightGrey: #959595;
+$white: #F8F8F6

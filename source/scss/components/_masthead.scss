@@ -1,0 +1,49 @@
+header {
+    padding:  65px 0 35px 0;
+    text-align: center;
+}
+
+.logo {
+    height: 105px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 105px;
+
+    a {
+        text-decoration:  none;
+    }
+
+    .logo-row {
+        margin-top: -6px;
+
+        div {
+            backface-visibility: hidden;
+            border: 2px solid $black;
+            display: inline-block;
+            height: 35px;
+            width: 35px;
+            perspective: 1000;
+            transform: rotate(45deg) translate3d(0, 0, 0);
+            transition: .2s transform ease-in;
+
+
+            &:nth-child(1), &:nth-child(2) {
+                margin-right: -6px;
+            }
+        }
+    }
+
+    &:hover div {
+        transform: rotate(0deg);
+    }
+}
+
+.wordmark {
+    color: $black;
+    font-family: 'Tungsten A', 'Tungsten B'; 
+    font-size:  42px;
+    font-style: normal;
+    font-weight: 300; 
+    text-transform: uppercase;
+}
+
