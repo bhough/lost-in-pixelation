@@ -3,17 +3,32 @@ article {
     h1 {
         color: $black;
         font-family: 'Tungsten A', 'Tungsten B'; 
-        font-size: 96px;
+        font-size: 4.5rem;
         font-style: normal;
         font-weight: 400;
-        margin-top: -55px;
-        margin-bottom: 65px;
+        margin-top: -2.6rem;
+        margin-bottom: 3rem;
         margin-left: -10px;
         text-transform: uppercase;
 
         span {
             background: $white;
             padding: 0 15px;
+        }
+
+         @media only screen and (min-width: 681px) and (max-width: 1280px) {
+            font-size: 3.5rem;
+        }
+
+        @media only screen and (max-width: 681px) {
+            font-size: 3.0rem;
+            margin-top: 1rem;
+            margin-bottom:  0;
+            text-align: center;
+
+            span  {
+                background: transparent;
+            }
         }
 
     }
@@ -24,14 +39,21 @@ article {
             color: $grey;
             float: right;
             font-family: 'Tungsten A', 'Tungsten B'; 
-            font-size: 21px;
+            font-size:  1rem;
             font-weight: 400;
-            margin-top: -105px;
             position: relative;
             text-transform: uppercase;
 
             & > span {
                 color: $lightGrey;
+            }
+
+            @media only screen and (max-width: 681px) {
+                display: block;
+                float: none;
+                font-weight: 300;
+                margin-bottom: 2.5rem;
+                text-align: center;
             }
         }
 
@@ -40,38 +62,64 @@ article {
     p {
         color: $grey;
         font-family: 'Whitney A', 'Whitney B';
-        font-size: 21px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 300; 
-        line-height: 1.4;
-        margin-bottom: 35px;
+        line-height: 1.54;
+        margin-bottom: 1.66rem;
 
         strong {
             font-weight:  600;
         }
 
+        a {
+            color: $green;
+            text-decoration: none;
+            background-image:
+                linear-gradient($white, $white),
+                linear-gradient($white, $white),
+                linear-gradient($green, $green);
+            background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+            background-repeat: no-repeat, no-repeat, repeat-x;
+            background-position: 0% 90%, 100% 90%, 0% 90%;
+            text-shadow: 0.03em 0 $white, -0.03em 0 $white, 0 0.03em $white, 0 -0.03em $white, 0.06em 0 $white, -0.06em 0 $white, 0.09em 0 $white, -0.09em 0 $white;
+
+            &:before, &:after, *, *:before, *:after {
+                text-shadow: none;
+            }
+
+            &:hover {
+                color: lighten($green,  20%);
+                background-image:
+                linear-gradient($white, $white),
+                linear-gradient($white, $white),
+                linear-gradient(lighten($green,  20%), lighten($green,  20%));
+            }
+
+        }
+
         &.opening-excerpt:first-letter { 
             float: left; 
             font-family: 'Tungsten A', 'Tungsten B'; 
-            font-size: 104px; 
+            font-size: 5.3rem; 
             font-style: normal;
             font-weight: 400; 
-            line-height: 60px; 
-            padding-top: 13px; 
+            line-height: .48; 
+            padding-top: 1rem; 
             padding-right: 5px; 
             padding-left: 0;
         }
 
        &.closing-excerpt:after {
-            border: 2px solid $black;
+            border: .1rem solid $black;
             content: '';
             display: inline-block;
-            height: 12px;
+            height: 0.5rem;
             left: 5px;
             position: relative;
-            top: -1px;
+            top: -.1rem;
             transform: rotate(45deg);
-            width: 12px;
+            width: 0.5rem;
         }
     }
 

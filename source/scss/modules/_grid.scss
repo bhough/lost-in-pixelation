@@ -1,6 +1,6 @@
 /***** Grid System Variables *****/
 
-$baseWidth: 1680px;
+$baseWidth: 100%;
 $baseColumns: 24;
 $baseColumnWidth: ( 100% / $baseColumns );
 $baseGutterWidth: 20px;
@@ -19,7 +19,7 @@ $outsideGutters: true;
 .row {
     width: 100%;
     max-width: $baseWidth;
-    margin: 0 auto;
+    margin: 0;
 
     // If Outer Gutters are set to true
 
@@ -65,36 +65,81 @@ $outsideGutters: true;
     float: left;
 }
 
-// Laptop & Desktop (viewport widths larger than 1100px)
+@media only screen and (min-width: 1441px) {
 
 @for $i from 1 through $baseColumns {
 
-    .column-#{$i} {
-        width: ( $baseColumnWidth * $i);
-    }
-
-    .prepend-#{$i} {
-        margin-left: ( $baseColumnWidth * $i );
-    }
-
-    .append-#{$i} {
-        margin-right: ( $baseColumnWidth * $i );
-    }
-
-    // Visibility Helper Classes
-
-    @media only screen and (min-width: 1101px) {
-
-        // Visibility Helper Classes
-
-        .desktop-hidden {
-            display: none !important;
+        .column-#{$i} {
+            width: ( $baseColumnWidth * $i);
         }
 
-        .desktop-visible {
-            display: block !important;
+        .prepend-#{$i} {
+            margin-left: ( $baseColumnWidth * $i );
         }
 
+        .append-#{$i} {
+            margin-right: ( $baseColumnWidth * $i );
+        }
     }
-    
+}
+
+
+@media only screen and (min-width: 1281px) and (max-width: 1440px)  {
+
+    @for $i from 1 through $baseColumns {
+
+        .desktop-column-#{$i} {
+            width: ( $baseColumnWidth * $i);
+        }
+
+        .desktop-prepend-#{$i} {
+            margin-left: ( $baseColumnWidth * $i );
+        }
+
+        .desktop-append-#{$i} {
+            margin-right: ( $baseColumnWidth * $i );
+        }
+    }
+}
+
+// Large Displays (viewport widths larger than 1440px)
+
+ @media only screen and (min-width: 681px) and (max-width: 1280px)  {
+
+    @for $i from 1 through $baseColumns / 2 {
+
+        .tablet-column-#{$i} {
+            width: ( $baseColumnWidth * 2 * $i) ;
+        }
+
+        // Large Prepend/Append Classes
+
+        .tablet-prepend-#{$i} {
+            margin-left: ( $baseColumnWidth * 2  * $i);
+        }
+
+        .tablet-append-#{$i} {
+            margin-right: ( $baseColumnWidth * 2 * $i );
+        }
+    }
+}
+
+ @media only screen and (max-width: 680px) {
+
+    @for $i from 1 through $baseColumns / 4 {
+
+        .phone-column-#{$i} {
+            width: ( $baseColumnWidth * 4 * $i) ;
+        }
+
+        // Large Prepend/Append Classes
+
+        .phone-prepend-#{$i} {
+            margin-left: ( $baseColumnWidth * 4  * $i);
+        }
+
+        .phone-append-#{$i} {
+            margin-right: ( $baseColumnWidth * 4 * $i );
+        }
+    }
 }
