@@ -16,11 +16,11 @@ article {
             padding: 0 15px;
         }
 
-         @media only screen and (min-width: 681px) and (max-width: 1280px) {
+         @media only screen and (min-width: 691px) and (max-width: 1280px) {
             font-size: 3.5rem;
         }
 
-        @media only screen and (max-width: 681px) {
+        @media only screen and (max-width: 690px) {
             font-size: 3.0rem;
             margin-top: 1rem;
             margin-bottom:  0;
@@ -42,17 +42,19 @@ article {
             font-size:  1rem;
             font-weight: 400;
             position: relative;
+            margin-top: -1.8rem;
             text-transform: uppercase;
 
             & > span {
                 color: $lightGrey;
             }
 
-            @media only screen and (max-width: 681px) {
+            @media only screen and (max-width: 690px) {
                 display: block;
                 float: none;
                 font-weight: 300;
                 margin-bottom: 2.5rem;
+                margin-top: 0;
                 text-align: center;
             }
         }
@@ -121,6 +123,12 @@ article {
             transform: rotate(45deg);
             width: 0.5rem;
         }
+    }
+
+    img, picture {
+        display: block;
+        margin: 1rem auto 2rem;
+        text-align: center;
     }
 
 }
