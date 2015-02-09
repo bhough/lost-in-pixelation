@@ -5,8 +5,11 @@ var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var newer = require('gulp-newer');
 var del = require('del');
 var replace = require('gulp-replace');
+var watch = require('gulp-watch');
+var batch = require('gulp-batch');
 
 var config = {
     scssPath: './source/scss',
@@ -40,11 +43,8 @@ gulp.task('csscompile', function() {
  
 gulp.task('imagemin', function () {
     return gulp.src(config.imgPath + '/**/*')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
-        }))
+        .pipe(newer('public/img'))
+       .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
         .pipe(gulp.dest('public/img'));
 });
 
@@ -54,11 +54,19 @@ gulp.task('clean', function(cb) {
 
 gulp.task('cachebust', function() {
     return gulp.src('index.html')
-       .pipe(replace(/main\.css\?([0-9]*)/g, 'main.css?' + getStamp()))
+       .pipe(replace(/main\.?([0-9]*)\.css/g, 'main.' + getStamp() + '.css'))
         .pipe(gulp.dest(''))
 });
 
+gulp.task('watch', function () {
+    watch(config.scssPath + '/**/*.scss', batch(function () {
+        gulp.start('clean','csscompile', 'cachebust');
+    }));
+    watch(config.imgPath + '/**/*', batch(function () {
+        gulp.start('imagemin');
+    }));
+});
+
 gulp.task('default', function() {
-    gulp.watch(config.scssPath + '/**/*.scss', ['clean','csscompile', 'cachebust']);
-    gulp.watch(config.imgPath + '/**/', ['imagemin']);
+    gulp.start('watch');
 });
