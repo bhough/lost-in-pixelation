@@ -9,7 +9,6 @@ var newer = require('gulp-newer');
 var del = require('del');
 var replace = require('gulp-replace');
 var watch = require('gulp-watch');
-var batch = require('gulp-batch');
 
 var config = {
     scssPath: './source/scss',
@@ -59,12 +58,11 @@ gulp.task('cachebust', function() {
 });
 
 gulp.task('watch', function () {
-    watch(config.scssPath + '/**/*.scss', batch(function () {
-        gulp.start('clean','csscompile', 'cachebust');
-    }));
-    watch(config.imgPath + '/**/*', batch(function () {
+    watch(config.scssPath + '/**/*.scss', function () {
+        gulp.start('clean','csscompile', 'cachebust')});
+    watch(config.imgPath + '/**/*', function () {
         gulp.start('imagemin');
-    }));
+    });
 });
 
 gulp.task('default', function() {

@@ -1,0 +1,234 @@
+.menu-button {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+
+    &:checked ~ nav {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    &:checked ~ .overlay {
+        opacity: 1;
+    }
+}
+
+.menu-bar {
+    position:  absolute;
+    top: 15px;
+    z-index: 2;
+    right: 15px;
+
+    @media only screen and (max-width: 690px)   {
+        top: 10px;
+        right: 10px;
+    }
+
+    label[for="menu-button"] {
+        display: block;
+        height: 30px;
+        width: 30px;
+        border: 2px solid $black;
+        transform: rotate(45deg);
+        cursor: pointer;
+        transition:  all .3s $swiftOut;
+
+        @media only screen and (max-width: 690px)   {
+            height: 25px;
+            width: 25px;
+        }
+
+        &:hover {
+            background: $black;
+
+            & ~ span {
+                background: $white;
+                box-shadow: 
+                0 5px 0 0 $white,
+                0 10px 0 0 $white;
+
+                @media only screen and (max-width: 690px)   {
+                  box-shadow: 
+                  0 4px 0 0 $white,
+                  0 8px 0 0 $white;
+              }
+          }
+      }
+  }
+
+  span {
+      position: absolute;
+      left: 8px;
+      top: 9px;
+      width: 15px;
+      height: 2px;
+      background: $black;
+      box-shadow: 
+      0 5px 0 0 $black,
+      0 10px 0 0 $black;
+      pointer-events: none;
+      transition:  all .2s $swiftOut;
+
+      @media only screen and (max-width: 690px)   {
+        top: 7px;
+        left: 7px;
+        width: 12px;
+        box-shadow: 
+        0 4px 0 0 $black,
+        0 8px 0 0 $black;
+    }
+
+}
+}
+
+.overlay {
+    position: fixed;
+    background: transparentize($black, 0.6);
+    transition: opacity 0.5s $swiftOut;
+    z-index: 3;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+nav {
+    position: fixed;
+    transition: all 0.5s $swiftOut;
+    z-index: 4;
+    transform: scaleY(0) translate3d(0, 0, 0);
+    perspective: 1000;
+    backface-visibility: hidden;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    .overlay-bar {
+        position:  absolute;
+        top: 5px;
+        z-index: 2;
+        right: 5px;
+
+        label[for="menu-button"] {
+            display: block;
+            height: 35px;
+            width: 35px;
+            cursor: pointer;
+
+            &:hover ~ span {
+             opacity: 0.8;
+         }
+     }
+
+     span {
+        position: absolute;
+        left: 8px;
+        top: 7px;
+        width: 20px;
+        height: 20px;
+        overflow: hidden;
+        pointer-events: none;
+        transition:  all .2s $swiftOut;
+
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            margin-top: -1px;
+            background: $black;
+            transition:  all .2s $swiftOut;
+        }
+
+        &:before {
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+}
+
+.menu {
+    position: absolute;
+    padding:  30px 75px;
+    height: 320px;
+    width: 100%;
+    max-width: 1730px;
+    box-shadow: 0 0 3px transparentize($black, 0.1);
+    left: 50%;
+    margin-top: -160px;
+    transform: translate(-50%, 0);
+    background: $white;
+    top: 50%;
+
+    @media only screen and (max-width: 690px)   {
+        height: auto;
+        top: 0;
+        bottom: 0;
+        margin-top: 0;
+        padding:  30px;
+    }
+
+    h3 {
+        display: inline-block;
+        color: $black;
+        font-family: 'Tungsten A', 'Tungsten B'; 
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+        border: 2px solid $black;
+        margin-bottom: 35px;
+        padding: 3px 5px;
+        @media only screen and (max-width: 1024px)   {
+            font-size: 1.4rem;
+        }
+    }
+
+    ul {
+
+        li {
+            display: inline-block;
+            font-family: 'Tungsten A', 'Tungsten B'; 
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 300;
+
+            @media only screen and (max-width: 1024px)   {
+                font-size: 1.3rem;
+            }
+
+            a {
+                color: $black;
+                text-decoration: none;
+                border-bottom: 1px dotted $black;
+                transition: all 0.3s $swiftOut;
+
+                &:hover {
+                    color: transparentize($black, 0.3);
+                    border-bottom: 1px dotted transparentize($black, 0.3);
+                }
+            }
+            
+            span {
+                margin-right: 30px;
+                font-size: 0.9rem;
+                color: $green;
+                font-weight: 400;
+
+                @media only screen and (max-width: 1024px)   {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

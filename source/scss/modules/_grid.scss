@@ -67,7 +67,7 @@ $outsideGutters: true;
 
 @media only screen and (min-width: 1441px) {
 
-@for $i from 1 through $baseColumns {
+    @for $i from 1 through $baseColumns {
 
         .column-#{$i} {
             width: ( $baseColumnWidth * $i);
@@ -104,7 +104,7 @@ $outsideGutters: true;
 
 // Large Displays (viewport widths larger than 1440px)
 
- @media only screen and (min-width: 691px) and (max-width: 1280px)  {
+@media only screen and (min-width: 691px) and (max-width: 1280px)  {
 
     @for $i from 1 through $baseColumns / 2 {
 
@@ -124,7 +124,7 @@ $outsideGutters: true;
     }
 }
 
- @media only screen and (max-width: 690px) {
+@media only screen and (max-width: 690px) {
 
     @for $i from 1 through $baseColumns / 4 {
 

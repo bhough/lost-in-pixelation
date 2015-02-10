@@ -16,7 +16,7 @@ article {
             padding: 0 15px;
         }
 
-         @media only screen and (min-width: 691px) and (max-width: 1280px) {
+        @media only screen and (min-width: 691px) and (max-width: 1280px) {
             font-size: 3.5rem;
         }
 
@@ -78,9 +78,9 @@ article {
             color: $green;
             text-decoration: none;
             background-image:
-                linear-gradient($white, $white),
-                linear-gradient($white, $white),
-                linear-gradient($green, $green);
+            linear-gradient($white, $white),
+            linear-gradient($white, $white),
+            linear-gradient($green, $green);
             background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
             background-repeat: no-repeat, no-repeat, repeat-x;
             background-position: 0% 90%, 100% 90%, 0% 90%;
@@ -112,7 +112,7 @@ article {
             padding-left: 0;
         }
 
-       &.closing-excerpt:after {
+        &.closing-excerpt:after {
             border: .1rem solid $black;
             content: '';
             display: inline-block;
