@@ -4,12 +4,11 @@
 @import "modules/variables";
 @import "modules/mixins";
 @import "modules/placeholders";
-@import "modules/globals";
-@import  "modules/grid";
+@import  "modules/layout";
 @import "modules/typography";
 @import "modules/icons";
 
-/***** Page Specific *****/
+/***** Page Components *****/
 
 @import "components/nav";
 @import "components/header";

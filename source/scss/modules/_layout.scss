@@ -14,7 +14,29 @@ $outsideGutters: true;
     box-sizing: border-box;
 }
 
-// Base Row Styling
+// Base Styling
+
+body {
+    border-top: 5px solid $black;
+    border-bottom: 5px solid $black;
+    background: $black;
+}
+
+.wrapper {
+    max-width:  1730px;
+    margin: 0 auto;
+    background: $white;
+}
+
+img {
+    max-width: 100%;
+}
+
+::selection {
+  background: #E3E3E3; 
+}
+
+// Row Styling
 
 .row {
     width: 100%;
