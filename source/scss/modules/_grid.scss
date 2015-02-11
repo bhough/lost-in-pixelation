@@ -36,7 +36,7 @@ $outsideGutters: true;
     // Micro Clear Fix
 
     &:after {
-        @include clearfix;
+        @extend %clearfix;
     }
 
     // Nested Rows

@@ -4,11 +4,6 @@ article {
         margin-top: -2.6rem;
         margin-bottom: 3rem;
         margin-left: -10px;
-        font-family: 'Tungsten A', 'Tungsten B'; 
-        font-size: 4.5rem;
-        font-style: normal;
-        font-weight: 400;
-        text-transform: uppercase;
         color: $black;
 
         span {
@@ -16,14 +11,9 @@ article {
             background: $white;
         }
 
-        @include media(tablet) {
-            font-size: 3.5rem;
-        }
-
         @include media(phone) {
             margin-top: 1rem;
             margin-bottom:  0;
-            font-size: 3.0rem;
             text-align: center;
 
             span  {
@@ -62,44 +52,7 @@ article {
     }
 
     p {
-        margin-bottom: 1.66rem;
-        font-family: 'Whitney A', 'Whitney B';
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 300; 
-        line-height: 1.54;
         color: $grey;
-
-        strong {
-            font-weight:  600;
-        }
-
-        a {
-            text-decoration: none;
-            color: $green;
-            text-shadow: 0.03em 0 $white, -0.03em 0 $white, 0 0.03em $white, 0 -0.03em $white, 0.06em 0 $white, -0.06em 0 $white, 0.09em 0 $white, -0.09em 0 $white;
-            background-image:
-            linear-gradient($white, $white),
-            linear-gradient($white, $white),
-            linear-gradient($green, $green);
-            background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-            background-repeat: no-repeat, no-repeat, repeat-x;
-            background-position: 0% 90%, 100% 90%, 0% 90%;
-
-
-            &:before, &:after, *, *:before, *:after {
-                text-shadow: none;
-            }
-
-            &:hover {
-                color: lighten($green,  20%);
-                background-image:
-                linear-gradient($white, $white),
-                linear-gradient($white, $white),
-                linear-gradient(lighten($green,  20%), lighten($green,  20%));
-            }
-
-        }
 
         &.opening-excerpt:first-letter { 
             float: left; 
@@ -116,11 +69,11 @@ article {
         &.closing-excerpt:after {
             content: '';
             display: inline-block;
-            border: .1rem solid $black;
-            height: 0.5rem;
+                        height: 0.5rem;
             width: 0.5rem;
+            border: .1rem solid $black;
             position: relative;
-            top: -.1rem;
+            top: -0.1rem;
             left: 5px;
             transform: rotate(45deg);
 
