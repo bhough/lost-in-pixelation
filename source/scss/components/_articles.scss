@@ -1,6 +1,6 @@
-article {
+.article {
 
-    h1 {
+    &__headline {
         margin-top: -2.6rem;
         margin-bottom: 3rem;
         margin-left: -10px;
@@ -23,9 +23,9 @@ article {
 
     }
 
-    aside {
+    .aside {
 
-        & > span {
+        &__article-info {
             position: relative;
             margin-top: -1.8rem;
             float: right;

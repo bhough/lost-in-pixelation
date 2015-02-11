@@ -1,8 +1,8 @@
-.menu-button {
+.modal-trigger {
     position: absolute;
     clip: rect(0, 0, 0, 0);
 
-    &:checked ~ nav {
+    &:checked ~ .nav {
         opacity: 1;
         transform: scaleY(1);
     }
@@ -10,74 +10,6 @@
     &:checked ~ .overlay {
         opacity: 1;
     }
-}
-
-.menu-bar {
-    position:  absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 2;
-
-    @include media(phone)   {
-        top: 10px;
-        right: 10px;
-    }
-
-    label[for="menu-button"] {
-        display: block;
-        height: 30px;
-        width: 30px;
-        border: 2px solid $black;
-        transition:  all .3s $swiftOut;
-        transform: rotate(45deg);
-        cursor: pointer;
-
-        @include media(phone)   {
-            height: 25px;
-            width: 25px;
-        }
-
-        &:hover {
-            background: $black;
-
-            & ~ span {
-                background: $white;
-                box-shadow: 
-                0 5px 0 0 $white,
-                0 10px 0 0 $white;
-
-                @include media(phone)   {
-                  box-shadow: 
-                  0 4px 0 0 $white,
-                  0 8px 0 0 $white;
-              }
-          }
-      }
-  }
-
-  span {
-      height: 2px;
-      width: 15px;
-      position: absolute;
-      top: 9px;
-      left: 8px;
-      background: $black;
-      box-shadow: 
-      0 5px 0 0 $black,
-      0 10px 0 0 $black;
-      transition:  all .2s $swiftOut;
-      pointer-events: none;
-
-      @include media(phone)   {
-        width: 12px;
-        top: 7px;
-        left: 7px;
-        box-shadow: 
-        0 4px 0 0 $black,
-        0 8px 0 0 $black;
-    }
-
-}
 }
 
 .overlay {
@@ -93,7 +25,7 @@
     pointer-events: none;
 }
 
-nav {
+.nav {
     position: fixed;
     top: 0;
     right: 0;
@@ -106,130 +38,126 @@ nav {
     transition: all 0.5s $swiftOut;
     transform: scaleY(0) translate3d(0, 0, 0);
 
-    .overlay-bar {
+    &__wrapper {
         position:  absolute;
         top: 5px;
         right: 5px;
         z-index: 2;
+    }
 
-        label[for="menu-button"] {
+    &__close-button {
             display: block;
             height: 35px;
             width: 35px;
             cursor: pointer;
 
             &:hover ~ span {
-               opacity: 0.8;
-           }
-       }
+             opacity: 0.8;
+            }
 
-       span {
-        height: 20px;
-        width: 20px;
-        overflow: hidden;
-        position: absolute;
-        top: 7px;
-        left: 8px;
-        transition:  all .2s $swiftOut;
-        pointer-events: none;
-
-        &:before, &:after {
-            content: '';
-            height: 2px;
-            width: 100%;
+         &__icon {
+            height: 20px;
+            width: 20px;
+            overflow: hidden;
             position: absolute;
-            top: 50%;
-            left: 0;
-            margin-top: -1px;
-            background: $black;
+            top: 7px;
+            left: 8px;
             transition:  all .2s $swiftOut;
-        }
+            pointer-events: none;
 
-        &:before {
-            transform: rotate(45deg);
-        }
+            &:before, &:after {
+                content: '';
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                margin-top: -1px;
+                background: $black;
+                transition:  all .2s $swiftOut;
+            }
 
-        &::after {
-            transform: rotate(-45deg);
-        }
-    }
-}
+            &:before {
+                transform: rotate(45deg);
+            }
 
-}
-
-.menu {
-    height: 320px;
-    width: 100%;
-    max-width: 1730px;
-    padding:  30px 75px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -160px;
-    background: $white;
-    box-shadow: 0 0 3px transparentize($black, 0.1);
-    transform: translate(-50%, 0);
-
-    @include media(phone)   {
-        height: auto;
-        padding:  30px;
-        top: 0;
-        bottom: 0;
-        margin-top: 0;
-    }
-
-    h3 {
-        display: inline-block;
-        border: 2px solid $black;
-        padding: 3px 5px;
-        margin-bottom: 35px;
-        font-family: 'Tungsten A', 'Tungsten B'; 
-        font-size: 1.2rem;
-        font-style: normal;
-        font-weight: 400;
-        text-transform: uppercase;
-        color: $black;
-
-        @include media(tablet)   {
-            font-size: 1.4rem;
+            &::after {
+                transform: rotate(-45deg);
+            }
         }
     }
 
-    ul {
+    &__menu {
+        height: 320px;
+        width: 100%;
+        max-width: 1730px;
+        padding:  30px 75px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -160px;
+        background: $white;
+        box-shadow: 0 0 3px transparentize($black, 0.1);
+        transform: translate(-50%, 0);
 
-        li {
+        @include media(phone)   {
+            height: auto;
+            padding:  30px;
+            top: 0;
+            bottom: 0;
+            margin-top: 0;
+        }
+
+        &__header {
             display: inline-block;
+            border: 2px solid $black;
+            padding: 3px 5px;
+            margin-bottom: 35px;
             font-family: 'Tungsten A', 'Tungsten B'; 
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-style: normal;
-            font-weight: 300;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: $black;
 
             @include media(tablet)   {
-                font-size: 1.3rem;
-            }
-
-            a {
-                border-bottom: 1px dotted $black;
-                text-decoration: none;
-                color: $black;
-                transition: all 0.3s $swiftOut;
-
-                &:hover {
-                    border-bottom: 1px dotted transparentize($black, 0.3);
-                    color: transparentize($black, 0.3);
-                }
-            }
-            
-            span {
-                margin-right: 30px;
-                font-size: 0.9rem;
-                font-weight: 400;
-                color: $green;
-
-                @include media(tablet)   {
-                    font-size: 1.2rem;
-                }
+                font-size: 1.4rem;
             }
         }
+
+            &__list-item {
+                display: inline-block;
+                font-family: 'Tungsten A', 'Tungsten B'; 
+                font-size: 1rem;
+                font-style: normal;
+                font-weight: 300;
+
+                @include media(tablet)   {
+                    font-size: 1.3rem;
+                }
+
+                a {
+                    border-bottom: 1px dotted $black;
+                    text-decoration: none;
+                    color: $black;
+                    transition: all 0.3s $swiftOut;
+
+                    &:hover {
+                        border-bottom: 1px dotted transparentize($black, 0.3);
+                        color: transparentize($black, 0.3);
+                    }
+                }
+                
+                span {
+                    margin-right: 30px;
+                    font-size: 0.9rem;
+                    font-weight: 400;
+                    color: $green;
+
+                    @include media(tablet)   {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
     }
 }

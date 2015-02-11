@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" href="public/favicons/favicon.png" />
 
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7082732/727286/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/main.2015021027.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/main.2015021151.css" />
 
 </head>
 
@@ -25,20 +25,20 @@
 
         <div class="row">
 
-            <input type="checkbox" id="menu-button" class="menu-button" />
+            <input type="checkbox" id="modal-trigger" class="modal-trigger" />
 
             <div class="overlay"></div>
 
-            <nav id="nav">
+            <nav class="nav">
 
-                <div class="menu column-24">
+                <div class="nav__menu column-24">
 
-                    <div class="overlay-bar"><label for="menu-button"></label><span></span></div>
+                    <div class="nav__wrapper"><label class="nav__close-button" for="modal-trigger"></label><span class="nav__close-button__icon"></span></div>
 
-                    <h3>Articles</h3>
+                    <h3 class="nav__menu__header">Articles</h3>
 
-                    <ul>
-                        <li><span>01</span> <a href="/">The Long Road Ahead</a></li>
+                    <ul class="nav__menu__list">
+                        <li class="nav__menu__list-item"><span>01</span> <a href="/">The Long Road Ahead</a></li>
                     </ul>
 
                 </div>  
@@ -47,31 +47,31 @@
 
         </div>
 
-        <header>
+        <header class="header">
 
             <div class="row">
 
-                <div class="menu-bar"><label for="menu-button"></label><span></span></div>
+                <div class="header__menu-wrapper"><label class="header__menu-button" for="modal-trigger"></label><span class="header__menu-button__icon"></span></div>
 
                 <div class="column-24 desktop-column-24 tablet-column-12 phone-column-6">
 
-                    <div class="logo">
+                    <div class="header__logo">
 
                         <a href="/">
 
-                            <div class="logo-row">
+                            <div class="header__logo__row">
                                 <div></div>
                                 <div></div>
                                 <div></div>
                             </div>
 
-                            <div class="logo-row">
+                            <div class="header__logo__row">
                                 <div></div>
                                 <div></div>
                                 <div></div>
                             </div>
 
-                            <div class="logo-row">
+                            <div class="header__logo__row">
                                 <div></div>
                                 <div></div>
                                 <div></div>
@@ -81,7 +81,7 @@
 
                     </div>
 
-                    <h2 class="wordmark">Lost In Pixelation</h2>
+                    <h2 class="header__wordmark">Lost In Pixelation</h2>
 
                 </div>
 
@@ -89,7 +89,7 @@
 
         </header>
 
-        <article >
+        <article class="article">
 
             <div class="row">
 
@@ -111,13 +111,13 @@
 
                                 <div class="prepend-1 column-17 desktop-prepend-1 desktop-column-17 tablet-column-8 phone-column-6">
 
-                                   <h1><span>The Long Road Ahead</span></h1>
+                                   <h1 class="article__headline"><span>The Long Road Ahead</span></h1>
 
                                </div>
 
-                               <aside class="column-6 desktop-column-6 tablet-column-4 phone-column-6">
+                               <aside class="aside column-6 desktop-column-6 tablet-column-4 phone-column-6">
 
-                                <span>Volume 1 <span>|</span> Article 1 <span>|</span> February 9, 2015</span>
+                                <span class="aside__article-info">Volume 1 <span>|</span> Article 1 <span>|</span> February 9, 2015</span>
 
                             </aside>
 
@@ -205,25 +205,25 @@
 
                                             <div  class="prepend-3 desktop-prepend-2 column-18 desktop-column-20 tablet-column-12 phone-column-6 append-3 desktop-append-2 ">
 
-                                                <footer>
+                                                <footer class="footer">
 
                                                     <div class="row"> 
 
                                                         <div class="column-12 desktop-column-12 tablet-column-6 phone-column-6">
 
-                                                            <ul class="footer-social">
-                                                                <li><a class="ss-twitter" href="http://twitter.com/b_hough" target="_blank"></a></li>
-                                                                <li><a class="ss-dribbble"href="http://dribbble.com/b_hough" target="_blank"></a></li>
-                                                                <li><a class="ss-octocat"href="http://github.com/bhough" target="_blank"></a></li>
-                                                                <li><a class="ss-linkedin"href="http://linkedin.com/in/brhough" target="_blank"></a></li>
-                                                                <li><a class="ss-instagram"href="http://instagram.com/b_hough" target="_blank"></a></li>
+                                                            <ul class="footer__social-links">
+                                                                <li class="footer__social-links__item"><a class="ss-twitter" href="http://twitter.com/b_hough" target="_blank"></a></li>
+                                                                <li class="footer__social-links__item"><a class="ss-dribbble"href="http://dribbble.com/b_hough" target="_blank"></a></li>
+                                                                <li class="footer__social-links__item"><a class="ss-octocat"href="http://github.com/bhough" target="_blank"></a></li>
+                                                                <li class="footer__social-links__item"><a class="ss-linkedin"href="http://linkedin.com/in/brhough" target="_blank"></a></li>
+                                                                <li class="footer__social-links__item"><a class="ss-instagram"href="http://instagram.com/b_hough" target="_blank"></a></li>
                                                             </ul>
 
                                                         </div>
 
                                                         <div class="column-12 desktop-column-12 tablet-column-6 phone-column-6">
 
-                                                            <span class="footer-copyright">&copy; 2011-2015<span> Lost In Pixelation, All Rights Reserved.</span></span>
+                                                            <span class="footer__copyright">&copy; 2011-2015<span> Lost In Pixelation, All Rights Reserved.</span></span>
 
                                                         </div>
 

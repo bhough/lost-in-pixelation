@@ -1,0 +1,115 @@
+.header {
+    padding:  3em 0 1.6rem 0;
+    position: relative;
+    text-align: center;
+
+    &__logo {
+        width: 4.8rem;
+        margin: 0 auto .6rem;
+
+        a {
+            text-decoration:  none;
+        }
+
+        &__row {
+            width: 4.8rem;
+            margin-top: -0.34rem;
+
+            div {
+                display: inline-block;
+                height: 1.6rem;
+                width: 1.6rem;
+                border: 2px solid $black;
+                backface-visibility: hidden;
+                perspective: 1000;
+                transition: .2s transform ease-in;
+                transform: rotate(45deg) translate3d(0, 0, 0);
+
+                &:nth-child(1), &:nth-child(2) {
+                    margin-right: -0.34rem;
+                }
+            }
+        }
+
+        &:hover div {
+            transform: rotate(0deg);
+        }
+    }
+
+    &__wordmark {
+        font-family: 'Tungsten A', 'Tungsten B'; 
+        font-size:  2rem;
+        font-style: normal;
+        font-weight: 300; 
+        text-transform: uppercase;
+        color: $black;
+    }
+
+    &__menu-wrapper {
+        position:  absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 2;
+
+        @include media(phone)   {
+            top: 10px;
+            right: 10px;
+        }
+    }
+
+    &__menu-button {
+        display: block;
+        height: 30px;
+        width: 30px;
+        border: 2px solid $black;
+        transition:  all .3s $swiftOut;
+        transform: rotate(45deg);
+        cursor: pointer;
+
+            @include media(phone)   {
+                height: 25px;
+                width: 25px;
+            }
+
+            &:hover {
+                background: $black;
+            }
+
+            &:hover ~ &__icon {
+                background: $white;
+                box-shadow: 
+                0 5px 0 0 $white,
+                0 10px 0 0 $white;
+
+                @include media(phone)   {
+                  box-shadow: 
+                  0 4px 0 0 $white,
+                  0 8px 0 0 $white;
+              }
+          } 
+
+          &__icon {
+              height: 2px;
+              width: 15px;
+              position: absolute;
+              top: 9px;
+              left: 8px;
+              background: $black;
+              box-shadow: 
+              0 5px 0 0 $black,
+              0 10px 0 0 $black;
+              transition:  all .2s $swiftOut;
+              pointer-events: none;
+
+                  @include media(phone)   {
+                    width: 12px;
+                    top: 7px;
+                    left: 7px;
+                    box-shadow: 
+                    0 4px 0 0 $black,
+                    0 8px 0 0 $black;
+             }
+        }
+    }
+}
+
