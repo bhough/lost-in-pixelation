@@ -1,5 +1,7 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var path = require('path');
+var plumber = require('gulp-plumber');
 var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
@@ -14,6 +16,12 @@ var config = {
     scssPath: './source/scss',
     imgPath: './source/img'
 }
+
+var onError = function (err) {  
+  gutil.beep();
+  console.log(err);
+  this.emit('end');
+};
 
 var getStamp = function() {
     var myDate = new Date();
@@ -30,6 +38,9 @@ var getStamp = function() {
  
 gulp.task('csscompile', function() {
   return gulp.src(config.scssPath + '/main.scss')
+  .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(compass({
       project: path.join(__dirname, '/'),
       css: 'public/css',
@@ -42,6 +53,9 @@ gulp.task('csscompile', function() {
  
 gulp.task('imagemin', function () {
     return gulp.src(config.imgPath + '/**/*')
+        .pipe(plumber({
+          errorHandler: onError
+        }))
         .pipe(newer('public/img'))
        .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
         .pipe(gulp.dest('public/img'));
@@ -53,6 +67,9 @@ gulp.task('clean', function(cb) {
 
 gulp.task('cachebust', function() {
     return gulp.src('index.html')
+        .pipe(plumber({
+          errorHandler: onError
+        }))
        .pipe(replace(/main\.?([0-9]*)\.css/g, 'main.' + getStamp() + '.css'))
         .pipe(gulp.dest(''))
 });

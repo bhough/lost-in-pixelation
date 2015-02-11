@@ -3,8 +3,8 @@
     clip: rect(0, 0, 0, 0);
 
     &:checked ~ nav {
-        transform: scaleY(1);
         opacity: 1;
+        transform: scaleY(1);
     }
 
     &:checked ~ .overlay {
@@ -15,10 +15,10 @@
 .menu-bar {
     position:  absolute;
     top: 15px;
-    z-index: 2;
     right: 15px;
+    z-index: 2;
 
-    @media only screen and (max-width: 690px)   {
+    @include media(phone)   {
         top: 10px;
         right: 10px;
     }
@@ -28,11 +28,11 @@
         height: 30px;
         width: 30px;
         border: 2px solid $black;
+        transition:  all .3s $swiftOut;
         transform: rotate(45deg);
         cursor: pointer;
-        transition:  all .3s $swiftOut;
 
-        @media only screen and (max-width: 690px)   {
+        @include media(phone)   {
             height: 25px;
             width: 25px;
         }
@@ -46,7 +46,7 @@
                 0 5px 0 0 $white,
                 0 10px 0 0 $white;
 
-                @media only screen and (max-width: 690px)   {
+                @include media(phone)   {
                   box-shadow: 
                   0 4px 0 0 $white,
                   0 8px 0 0 $white;
@@ -56,22 +56,22 @@
   }
 
   span {
-      position: absolute;
-      left: 8px;
-      top: 9px;
-      width: 15px;
       height: 2px;
+      width: 15px;
+      position: absolute;
+      top: 9px;
+      left: 8px;
       background: $black;
       box-shadow: 
       0 5px 0 0 $black,
       0 10px 0 0 $black;
-      pointer-events: none;
       transition:  all .2s $swiftOut;
+      pointer-events: none;
 
-      @media only screen and (max-width: 690px)   {
+      @include media(phone)   {
+        width: 12px;
         top: 7px;
         left: 7px;
-        width: 12px;
         box-shadow: 
         0 4px 0 0 $black,
         0 8px 0 0 $black;
@@ -82,35 +82,35 @@
 
 .overlay {
     position: fixed;
-    background: transparentize($black, 0.6);
-    transition: opacity 0.5s $swiftOut;
-    z-index: 3;
-    opacity: 0;
     top: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     left: 0;
+    z-index: 3;
+    background: transparentize($black, 0.6);
+    opacity: 0;
+    transition: opacity 0.5s $swiftOut;
     pointer-events: none;
 }
 
 nav {
     position: fixed;
-    transition: all 0.5s $swiftOut;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 4;
-    transform: scaleY(0) translate3d(0, 0, 0);
-    perspective: 1000;
     backface-visibility: hidden;
     opacity: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    perspective: 1000;
+    transition: all 0.5s $swiftOut;
+    transform: scaleY(0) translate3d(0, 0, 0);
 
     .overlay-bar {
         position:  absolute;
         top: 5px;
-        z-index: 2;
         right: 5px;
+        z-index: 2;
 
         label[for="menu-button"] {
             display: block;
@@ -119,25 +119,25 @@ nav {
             cursor: pointer;
 
             &:hover ~ span {
-             opacity: 0.8;
-         }
-     }
+               opacity: 0.8;
+           }
+       }
 
-     span {
-        position: absolute;
-        left: 8px;
-        top: 7px;
-        width: 20px;
+       span {
         height: 20px;
+        width: 20px;
         overflow: hidden;
-        pointer-events: none;
+        position: absolute;
+        top: 7px;
+        left: 8px;
         transition:  all .2s $swiftOut;
+        pointer-events: none;
 
         &:before, &:after {
             content: '';
-            position: absolute;
             height: 2px;
             width: 100%;
+            position: absolute;
             top: 50%;
             left: 0;
             margin-top: -1px;
@@ -158,38 +158,39 @@ nav {
 }
 
 .menu {
-    position: absolute;
-    padding:  30px 75px;
     height: 320px;
     width: 100%;
     max-width: 1730px;
-    box-shadow: 0 0 3px transparentize($black, 0.1);
+    padding:  30px 75px;
+    position: absolute;
+    top: 50%;
     left: 50%;
     margin-top: -160px;
-    transform: translate(-50%, 0);
     background: $white;
-    top: 50%;
+    box-shadow: 0 0 3px transparentize($black, 0.1);
+    transform: translate(-50%, 0);
 
-    @media only screen and (max-width: 690px)   {
+    @include media(phone)   {
         height: auto;
+        padding:  30px;
         top: 0;
         bottom: 0;
         margin-top: 0;
-        padding:  30px;
     }
 
     h3 {
         display: inline-block;
-        color: $black;
+        border: 2px solid $black;
+        padding: 3px 5px;
+        margin-bottom: 35px;
         font-family: 'Tungsten A', 'Tungsten B'; 
         font-size: 1.2rem;
         font-style: normal;
         font-weight: 400;
         text-transform: uppercase;
-        border: 2px solid $black;
-        margin-bottom: 35px;
-        padding: 3px 5px;
-        @media only screen and (max-width: 1024px)   {
+        color: $black;
+
+        @include media(tablet)   {
             font-size: 1.4rem;
         }
     }
@@ -203,29 +204,29 @@ nav {
             font-style: normal;
             font-weight: 300;
 
-            @media only screen and (max-width: 1024px)   {
+            @include media(tablet)   {
                 font-size: 1.3rem;
             }
 
             a {
-                color: $black;
-                text-decoration: none;
                 border-bottom: 1px dotted $black;
+                text-decoration: none;
+                color: $black;
                 transition: all 0.3s $swiftOut;
 
                 &:hover {
-                    color: transparentize($black, 0.3);
                     border-bottom: 1px dotted transparentize($black, 0.3);
+                    color: transparentize($black, 0.3);
                 }
             }
             
             span {
                 margin-right: 30px;
                 font-size: 0.9rem;
-                color: $green;
                 font-weight: 400;
+                color: $green;
 
-                @media only screen and (max-width: 1024px)   {
+                @include media(tablet)   {
                     font-size: 1.2rem;
                 }
             }

@@ -1,29 +1,29 @@
 article {
 
     h1 {
-        color: $black;
+        margin-top: -2.6rem;
+        margin-bottom: 3rem;
+        margin-left: -10px;
         font-family: 'Tungsten A', 'Tungsten B'; 
         font-size: 4.5rem;
         font-style: normal;
         font-weight: 400;
-        margin-top: -2.6rem;
-        margin-bottom: 3rem;
-        margin-left: -10px;
         text-transform: uppercase;
+        color: $black;
 
         span {
-            background: $white;
             padding: 0 15px;
+            background: $white;
         }
 
-        @media only screen and (min-width: 691px) and (max-width: 1280px) {
+        @include media(tablet) {
             font-size: 3.5rem;
         }
 
-        @media only screen and (max-width: 690px) {
-            font-size: 3.0rem;
+        @include media(phone) {
             margin-top: 1rem;
             margin-bottom:  0;
+            font-size: 3.0rem;
             text-align: center;
 
             span  {
@@ -36,25 +36,25 @@ article {
     aside {
 
         & > span {
-            color: $grey;
+            position: relative;
+            margin-top: -1.8rem;
             float: right;
             font-family: 'Tungsten A', 'Tungsten B'; 
             font-size:  1rem;
             font-weight: 400;
-            position: relative;
-            margin-top: -1.8rem;
             text-transform: uppercase;
+            color: $grey;
 
             & > span {
                 color: $lightGrey;
             }
 
-            @media only screen and (max-width: 690px) {
+            @include media(phone) {
                 display: block;
                 float: none;
-                font-weight: 300;
-                margin-bottom: 2.5rem;
                 margin-top: 0;
+                margin-bottom: 2.5rem;
+                font-weight: 300;
                 text-align: center;
             }
         }
@@ -62,21 +62,22 @@ article {
     }
 
     p {
-        color: $grey;
+        margin-bottom: 1.66rem;
         font-family: 'Whitney A', 'Whitney B';
         font-size: 1rem;
         font-style: normal;
         font-weight: 300; 
         line-height: 1.54;
-        margin-bottom: 1.66rem;
+        color: $grey;
 
         strong {
             font-weight:  600;
         }
 
         a {
-            color: $green;
             text-decoration: none;
+            color: $green;
+            text-shadow: 0.03em 0 $white, -0.03em 0 $white, 0 0.03em $white, 0 -0.03em $white, 0.06em 0 $white, -0.06em 0 $white, 0.09em 0 $white, -0.09em 0 $white;
             background-image:
             linear-gradient($white, $white),
             linear-gradient($white, $white),
@@ -84,7 +85,7 @@ article {
             background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
             background-repeat: no-repeat, no-repeat, repeat-x;
             background-position: 0% 90%, 100% 90%, 0% 90%;
-            text-shadow: 0.03em 0 $white, -0.03em 0 $white, 0 0.03em $white, 0 -0.03em $white, 0.06em 0 $white, -0.06em 0 $white, 0.09em 0 $white, -0.09em 0 $white;
+
 
             &:before, &:after, *, *:before, *:after {
                 text-shadow: none;
@@ -102,26 +103,27 @@ article {
 
         &.opening-excerpt:first-letter { 
             float: left; 
+            padding-top: 1rem; 
+            padding-right: 5px; 
+            padding-left: 0;
             font-family: 'Tungsten A', 'Tungsten B'; 
             font-size: 5.3rem; 
             font-style: normal;
             font-weight: 400; 
             line-height: .48; 
-            padding-top: 1rem; 
-            padding-right: 5px; 
-            padding-left: 0;
         }
 
         &.closing-excerpt:after {
-            border: .1rem solid $black;
             content: '';
             display: inline-block;
+            border: .1rem solid $black;
             height: 0.5rem;
-            left: 5px;
+            width: 0.5rem;
             position: relative;
             top: -.1rem;
+            left: 5px;
             transform: rotate(45deg);
-            width: 0.5rem;
+
         }
     }
 
