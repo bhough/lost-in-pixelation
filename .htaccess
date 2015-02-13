@@ -930,6 +930,9 @@ FileETag None
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
     RewriteCond %{REQUEST_FILENAME} !-f
+
     RewriteRule ^(.+)\.(\d+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp)$ $1.$3 [L]
+    RewriteRule ^([^\.]+)$ $1.html [NC,L]
  </IfModule>
