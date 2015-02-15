@@ -24,16 +24,10 @@ var onError = function (err) {
 };
 
 var getStamp = function() {
-    var myDate = new Date();
 
-    var myYear = myDate.getFullYear().toString();
-    var myMonth = ('0' + (myDate.getMonth() + 1)).slice(-2);
-    var myDay = ('0' + myDate.getDate()).slice(-2);
-    var mySeconds = myDate.getSeconds().toString();
+    var myDate = new Date().getTime();
+    return myDate;
 
-    var myFullDate = myYear + myMonth + myDay + mySeconds;
-
-    return myFullDate;
 };
  
 gulp.task('csscompile', function() {
@@ -66,12 +60,12 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('cachebust', function() {
-    return gulp.src('index.html')
+    return gulp.src('./app/views/partials/header.handlebars')
         .pipe(plumber({
           errorHandler: onError
         }))
        .pipe(replace(/main\.?([0-9]*)\.css/g, 'main.' + getStamp() + '.css'))
-        .pipe(gulp.dest(''))
+        .pipe(gulp.dest('./app/views/partials/'))
 });
 
 gulp.task('watch', function () {
