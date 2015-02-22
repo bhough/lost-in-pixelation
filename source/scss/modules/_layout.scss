@@ -39,9 +39,11 @@ img {
 // Row Styling
 
 .row {
+    display: flex;
     width: 100%;
     max-width: $baseWidth;
     margin: 0;
+    align-items: center;
 
     // If Outer Gutters are set to true
 
@@ -81,10 +83,7 @@ img {
 // Base Column Style
 
 [class*="column-"] {
-    min-height: 1px;
     padding: 0 ( $baseGutterWidth / 2 );
-    position: relative;
-    float: left;
 }
 
 @include media(cinema) {

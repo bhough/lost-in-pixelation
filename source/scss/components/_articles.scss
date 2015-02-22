@@ -27,7 +27,7 @@
 
         &__article-info {
             position: relative;
-            margin-top: -1.8rem;
+            margin-top: -4.2rem;
             float: right;
             font-family: 'Tungsten A', 'Tungsten B'; 
             font-size:  1rem;
@@ -80,9 +80,12 @@
         }
     }
 
-    img, picture {
+    &__header-image {
         display: block;
         margin: 1rem auto 2rem;
+    }
+
+    img, picture {
         text-align: center;
     }
 
