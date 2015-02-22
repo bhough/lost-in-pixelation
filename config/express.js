@@ -49,6 +49,7 @@ module.exports = function() {
     });
 
     app.use('/public', express.static('public'));
+    app.use('/app', express.static('app'));
 
     return app;
 
