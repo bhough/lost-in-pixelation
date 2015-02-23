@@ -138,10 +138,13 @@
                 }
 
                 a {
-                    font-size: 1.1rem;
+                    border-bottom: 1px dotted $black;
+                    text-decoration: none;
                     color: $black;
+                    transition: all 0.3s $swiftOut;
 
                     &:hover {
+                        border-bottom: 1px dotted transparentize($black, 0.3);
                         color: transparentize($black, 0.3);
                     }
                 }
