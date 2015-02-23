@@ -1,8 +1,8 @@
 .article {
 
     &__headline {
-        margin-top: -2.6rem;
-        margin-bottom: 3rem;
+        margin-top: -4.5rem;
+        margin-bottom: 4.5rem;
         margin-left: -10px;
         color: $black;
 
@@ -12,7 +12,7 @@
         }
 
         @include media(phone) {
-            margin-top: 1rem;
+            margin-top: 0;
             margin-bottom:  0;
             text-align: center;
 
@@ -27,7 +27,7 @@
 
         &__article-info {
             position: relative;
-            margin-top: -4.2rem;
+            margin-top: -4rem;
             float: right;
             font-family: 'Tungsten A', 'Tungsten B'; 
             font-size:  1rem;
@@ -85,8 +85,13 @@
         margin: 1rem auto 2rem;
     }
 
-    img, picture {
+    &__img, &__picture {
         text-align: center;
+        margin-bottom: 1.66rem;
     }
 
 }
+
+    .twitter-tweet {
+        margin: 0 auto 1.66rem !important;
+    }
