@@ -103,6 +103,7 @@
         list-style: disc;
 
         a {
+            font-weight: 400;
             text-decoration: none;
             text-shadow: 0.03em 0 $white, -0.03em 0 $white, 0 0.03em $white, 0 -0.03em $white, 0.06em 0 $white, -0.06em 0 $white, 0.09em 0 $white, -0.09em 0 $white;
             color: $green;
