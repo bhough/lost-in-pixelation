@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" href="public/favicons/favicon.png" />
 
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7082732/727286/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/main.2015022228.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/main.2015030332.css" />
 
 </head>
 
@@ -35,7 +35,7 @@
 
                     <div class="nav__wrapper"><label class="nav__close-button" for="modal-trigger"></label><span class="nav__close-button__icon"></span></div>
 
-                    <h3 class="nav__menu__header">Articles</h3>
+                    <h3 class="nav__menu__header">Articles</h2>
 
                     <ul class="nav__menu__list">
 
@@ -48,6 +48,12 @@
                         <li class="nav__menu__list-item">
 
                             <span>02</span> <a href="/designing-code">Designing Code</a>
+
+                        </li><!--nav__menu__list-item -->
+
+                        <li class="nav__menu__list-item">
+
+                            <span>03</span> <a href="/grunt-work">Grunt Work</a>
 
                         </li><!--nav__menu__list-item -->
 
@@ -123,13 +129,13 @@
 
                     <div class="prepend-1 column-17 desktop-prepend-1 desktop-column-17 tablet-column-8 phone-column-6">
 
-                    <h1 class="article__headline"><span>Designing Code</span></h1>
+                    <h1 class="article__headline"><span>Grunt Work</span></h1>
 
                    </div><!-- column -->
 
                     <aside class="aside column-6 desktop-column-6 tablet-column-4 phone-column-6">
 
-                        <span class="aside__article-info">Volume 1 <span>|</span> Article 2 <span>|</span> February 23, 2015</span>
+                        <span class="aside__article-info">Volume 1 <span>|</span> Article 3 <span>|</span> March 5, 2015</span>
 
                     </aside><!-- aside -->
 
@@ -138,97 +144,200 @@
                 <div class="row">
 
                      <div class="prepend-6 column-12 append-6  desktop-prepend-6 desktop-column-12 desktop-append-6 tablet-prepend-1 tablet-column-10 tablet-append-1 phone-column-6 ">
-                        <p class="opening-excerpt">For years, we have been <a href="http://blog.capwatkins.com/why-designers-really-should-learn-to-code" target="_blank">debating whether designers should know how to code</a>. We seem to always come to the same conclusion: Yes! But why then aren't designers heading in droves to learn the development side of things. Designers who can code are invaluable to an organization, especially if you prefer smaller companies and startups. So why aren't there more? <a href="https://twitter.com/brian_lovin" target="_blank">Brian Lovin</a>, proposed the question on twitter this past week, which lead to a pretty lively discussion around what is keeping most designers from learning to code.</p>
+                        <p class="opening-excerpt">The world of front-end development has become a complicated place. For years we were free to live a life free from the command prompt, from frameworks, from fancy build and deploy processes. HTML, CSS, and Javascript were our only friends. But over the last few years, our toolbox has expanded at a mind-blowing pace. Preprocessors, MV* frameworks, script loaders, package managers, templating frameworks, the list goes on and on. It has become a tremendous amount to manage.</p>
 
-                        <blockquote class="twitter-tweet" lang="en"><p>Designers: What&#39;s the biggest barrier to you learning to code right now?</p>&mdash; Brian Lovin (@brian_lovin) <a href="https://twitter.com/brian_lovin/status/568649650833485824">February 20, 2015</a></blockquote>
+                        <p>It was only a matter of time before we came up with tools to handle…well, our tools. Task runners were devised to help us wrangle the plethora of things you need to optimize, compile, and otherwise manage inside of your projects as you include more and more tools into your repertoire. Grunt.js is one such task runner. An open-source, command line tool built with JavaScript, meant to handle the ever increasing laundry list of tasks we encounter on a daily basis. If you can write JSON, you can use Grunt to automate file compilation, image optimization, pre-processing, and tons more.</p>
 
-                        <p>The most frequent, response was &ldquo;time&rdquo;. When you dig deeper though, there is more to it than just simply finding time in the day. Instead, it is a symptom of the increasing demand on both designers and developers to grasp an ever-expanding toolset. It seems that the basics of either profession, aren't quite so&hellip;basic&hellip;anymore.</p>
+                        <h2>Installation</h2>
 
-                        <h2>The Times, They Are Changing</h2>
+                        <p>Installation of Grunt is a breeze. To get started we will need to install Node, which can be downloaded and installed direct from <a href="http://www.nodejs.org/" target="_blank">NodeJS.org</a>. Once that is complete, open up a new terminal window and run the following:</p>
 
-                        <p>Three Years ago there was not much required to start coding. All we needed was a text editor and a FTP client. Text editors are no longer enough as we also have to spend time in the incredibly intimidating world of the command line. GitHub and SSH are basically requirements at any company worth their salt, leaving FTP clients in their dust. Furhtermore we have added an endless sea of dependency management, package managers, and task runners to the equation. That leaves a lot of things to learn before even writing a single line of code.</p>
+                        <pre><code class="language-bash">npm install -g grunt-cli</code></pre>
 
-                        <p>There is also a matter of what languages we are going to tackle. HTML, CSS, and jQuery were once all you needed. Fast forward a few years, and that list has become practically endless. Even more frustarting is that the proper choice is not always clear, being often a matter of preference. Should I write my CSS in SASS or LESS? Should I continue to use jQuery or can I get away with good ol' &lsquo;Vanilla&rsquo; JS? What about Bootstrap, Foundation, Angular, Backbone, Grunt, Gulp&hellip;it is enough to make anyone's head spin. Our workflows have never been more advanced, nor more bloated.</p>
+                        <p>This will install the Grunt CLI globally on your system, but not Grunt itself. The Grunt CLI will run the version of Grunt you install for a particular project, allowing you to run different versions for different projects.</p>
+        
+                        <p>Grunt relies on two files. Gruntfile.js and package.json. Package.json manages your project settings and the plugins your project will load. <a href="http://gruntjs.com/plugins" target="_blank">Plugins</a> are really the power behind Grunt. There is one for practically any task you can think of. The Grunt team even maintains a library of officially supported plugins. Plus, if for some reason you can't find one that will do exactly what you need, you can create your own. Gruntfile.js is where you initialize these plugins, configure and run your tasks, set configuration variables, etc.</p>
 
-                        <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/b_hough">@b_hough</a> yeah, everyone else seems to be saying &quot;time&quot; right now. Perhaps some part of it is if there are specific things a designer...</p>&mdash; Brian Lovin (@brian_lovin) <a href="https://twitter.com/brian_lovin/status/568653595874193408">February 20, 2015</a></blockquote>
-                        
-                        <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/b_hough">@b_hough</a> ...wants to focus on. I.e. learning prototyping vs. html/css vs. jquery vs. ...</p>&mdash; Brian Lovin (@brian_lovin) <a href="https://twitter.com/brian_lovin/status/568653658562248704">February 20, 2015</a></blockquote>
+                        <h2>Configuration</h2>
 
-                        <h2>The Grass Is Not Always Greener</h2>
+                        <p>Let's start out with a bootstrap configuration before we dive into the nuts and bolts. First, we'll look at what makes up a package.json file:</p>
 
-                        <p>Given the often convoluted workflow on the development side of things, we'd be forgiven for not wanting to dive in. It is not just the engineering side of things where the workflow has gotten complicated. Up until recently, we just did our thing in Photoshop (or Fireworks if that was your thing), sliced things up, and called it good. Design, however, has not been immune to the rapid maturation of the web.</p>
+                        <pre><code class="language-javascript">{
+  'name': 'my-project-name',
+  'version': '0.1.0',
+  'devDependencies': {
+  }
+}</code></pre>
 
-                        <p>High resolution displays brought the need for us to start providing vector based assets, bringing Illustrator, and eventually <a href="http://bohemiancoding.com/sketch/" target="_blank">Sketch</a> into our lives. Then we realized that static prototypes for dynamic apps was not going to scale. This ushered in apps like <a href="http://www.invisionapp.com/" target="_blank">InVision</a> and <a href="http://www.pixate.com/" target="_blank">Pixate</a> to improve that process. Tools once non-existant or nice-to-haves became practically required overnight.</p>
+                        <p>What we have is a simple JSON object with basic information about our project. ‘Name’ is just an identifier for your project, this can be whatever value you like. ‘Version’ is the version number of our particular project, which you can increment manually. Last, and most importantly, is the ‘devDependencies’ object. This contains all the required packages for our project.</p>
 
-                        <p>With all these new workflow elements on the design side, and the increasingly higher barrier to entry into coding, it is no wonder that everyone blames time for why they aren't coding yet.</p>
+                        <p>The first dependency we will install is Grunt itself. This may seem weird initially, but makes a lot more sense when you realize that package.json is not something that is specific to Grunt, but is instead part of Node itself. What you are effectively running is a Node server with Grunt (alongside your other dependencies) installed on it. Grunt is essentially just one Node package that runs tasks using other Node packages. We can install Grunt by heading back to the command line and running the following from our project root:</p>
+    
+                        <pre><code class="language-bash">npm install grunt --save-dev</code></pre>
 
-                        <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/brian_lovin">@brian_lovin</a> Exactly, 3 years ago I could do everything I needed with a text editor and a ftp client. Now that is considered a joke.</p>&mdash; Brian Hough (@b_hough) <a href="https://twitter.com/b_hough/status/568651221675823104">February 20, 2015</a></blockquote>
+                        <p>This will add the latest version of Grunt to your project's package.json:</p>
 
-                        <h2>Dip Your Toe In</h2>
+                        <pre><code class="language-javascript">{
+  'name': 'my-project-name',
+  'version': '0.1.0',
+  'devDependencies': {
+    'grunt': '~0.4.1'
+  }
+}</code></pre>
 
-                        <p>There is still a tremendous amount of value knowing code as a designer. Whether it is to gain a better understanding of the context we are designing for, making sure what we design is actually doable, or just simplifying our workflow, we are better served by having some coding skills. However, there is still the issue of time. I've found the best approach is to ease yourself into things by integrating code based tools into my design workflow. So grab your text editor of choice, and let's get started.</p>
+                        <p>I mentioned in the beginning that you were not installing Grunt directly, but instead a CLI that runs Grunt. Each project you want to run Grunt with will have its own version. This is done to make code easier to maintain when Grunt updates, allowing you to upgrade Grunt on a per project basis. Another safeguard to ensure safe updating is the versioning notation. To avoid accidentally upgrading, most dependencies are installed using a tilde version range. This restricts the automatic upgrading of packages to only minor versions, hopefully saving you from possible code-breaking changes. For example a dependency with a version rage of ~0.4.1 will upgrade automatically until 0.4.9, but would not automatically update to 0.5.0. Most of this is handled automatically for you when a dependency is installed, but it is still good to know how and why it works this way.</p>
 
-                        <h3>Let Code Do The Dirty Work</h3>
+                        <p>For now, our Gruntfile.js file will remain very basic. All your tasks will be wrapped in a single Grunt function:</p>
 
-                        <p>The first step to making more time for coding, is to leverage it to save time with your design. Task runners were created to handle the more mundane parts of the development workflow, and can do the same for your design workflow. In the world of responsiveness, generating all the assets necessary for every possible device is a huge time sink. This is where task runners can produce image assets, compile icons, and handle fallbacks for older browsers. Given the amount of time designers spend on these tasks, you can free yourself up quite a bit by automating this process.</p>
+                        <pre><code class="language-javascript">module.exports = function(grunt) {
+  // Do grunt-related things in here
+}</code></pre>
 
-                         <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/b_hough">@b_hough</a> oh man, totally relate to that. always balancing between growing on the visual/ux side and coding. good to combine them?</p>&mdash; Brian Lovin (@brian_lovin) <a href="https://twitter.com/brian_lovin/status/568657036814069760">February 20, 2015</a></blockquote>
+                        <p>Inside of this we will start with some basic configuration that initializes Grunt and points it to our package.json file:</p>
 
-                        <p><a href="http://gruntjs.com/" target="_blank">Grunt</a> and <a href="http://gulpjs.com/" target="_blank">Gulp</a> are the predominant options. Installing either is simple, and will start to get you comfortable with the command line. There are some deeper differences between the two, but for our purposes, it boils down to how they are configured. If you have some basic understanding of JavaScript, or want to challenge yourself a bit, Gulp feels more like writing code and will let you stretch your legs a bit. If you are just starting out and can write JSON, Grunt is a good choice. </p>
+                        <pre><code class="language-javascript">module.exports = function(grunt) {
 
-                        <p>The links below will help you get either choice up and running.</p>
+  grunt.initConfig({
 
-                        <ul class="article__list">
-                            <li>Documentation: <a href="http://gruntjs.com/getting-started" target="_blank">Grunt</a> // <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md" target="_blank">Gulp</a></li>
-                            <li>Generate Responsive Images: <a href="https://www.npmjs.com/package/grunt-responsive-images" target="_blank">Grunt</a> // <a href="https://www.npmjs.com/package/gulp-responsive/" target="_blank">Gulp</a></li>
-                            <li>Generate Icon Packages: <a href="https://www.npmjs.com/package/grunt-grunticon" target="_blank">Grunt</a> // <a href="https://www.npmjs.com/package/gulp-iconfont/" target="_blank">Gulp</a></li>
-                            <li>Generate Image Fallbacks: <a href="https://www.npmjs.com/package/grunt-svg2png" target="_blank">Grunt</a> // <a href="https://www.npmjs.com/package/gulp-rsvg/" target="_blank">Gulp</a></li>
-                        </ul>
+    pkg: grunt.file.readJSON('package.json'),
 
-                        <h3>Get A Start With Git</h3>
+  });
 
-                        <p>Almost everyone uses version control for their code base, <a href="http://git-scm.com/" target="_blank">Git</a> being by far the most prominent. To get started, grab yourself a <a href="https://github.com/" target="_blank">GitHub</a> account, and read through their <a href="https://help.github.com/categories/bootcamp/" target="_blank">setup documentation</a>. This process can help us get a bit deeper into the command line. If you would prefer, there is also a <a href="https://mac.github.com/" target="_blank">GitHub GUI</a> available.</p>
+};</code></pre>
 
-                        <p>If you took my advice above and started working with Grunt or Gulp, we will be spitting out a slew of assets your dev team will be leveraging directly. We can make that even easier by placing those assets directly into our codebase ourselves, instead of passing them via email or Dropbox. This is a good way to familiarize yourself with <a href="https://help.github.com/articles/making-changes/" target="_blank">committing code</a> and preparing <a href="https://help.github.com/articles/using-pull-requests/" target="_blank">pull requests</a>, the two primary functions you will be utilizing in Git.</p>
+                        <p>This gives us what we need to start adding our first task for Grunt to run.</p>
 
-                        <p>Here are some links to get you started with version control:</p>
+                        <h2>Your First Task</h2>
 
-                        <ul class="article__list">
-                            <li><a href="https://try.github.io/levels/1/challenges/1/" target="_blank">Get Started With Git and GitHub</a></li>
-                            <li><a href="https://mac.github.com/" target="_blank">GitHub GUI for Mac</a></li>
-                            <li><a href="https://help.github.com/articles/create-a-repo/" target="_blank">Making A Repo on GitHub</a></li>
-                             <li><a href="https://help.github.com/articles/making-changes/" target="_blank">Committing Code</a></li>
-                            <li><a href="https://help.github.com/articles/using-pull-requests/" target="_blank">Your First Pull Request</a></li>
-                        </ul>
+                        <p>We are going to start with a simple example, and something we always have a need for, image optimization. Using the official <a href="https://npmjs.org/package/grunt-contrib-imagemin" target="_blank">imagemin plugin</a>, we are going to have Grunt run a task that optimizes all our images. First things first, let's install the plugin by running the following from the root of your project:</p>
 
-                        <h3>Look Into The Matrix</h3>
+                        <pre><code class="language-bash">npm install grunt-contrib-imagemin --save-dev</code></pre>
 
-                        <p>A good way to learn how CSS works is to see how your designs are interpreted into code. If you can access your company's codebase, spend some time going through the HTML and CSS to see how developers turn our designs into code. This is an invaluable way to learn how a developer takes things from mocks to a fully functional app.</p>
+                        <p>If you are running this on a Mac, you may get a pop-up to install a dependency library required to optimize your images. Follow the instructions in the linked Apple knowledge base article, and re-run the above command.</p>
 
-                        <p>Another way of accomplishing this is the built-in CSS property export in <a href="http://bohemiancoding.com/sketch/" target="_blank">Sketch</a>. <a href="http://bohemiancoding.com/sketch/support/documentation/11-exporting/5-css.html" target="_blank">Right clicking any element</a> will export the CSS code needed to recreate that particular element. We can go even further using the <a href="https://github.com/jodyheavener/CSS-Buddy" target="_blank">CSS Buddy</a> plugin which let's us write CSS directly in Sketch to create our elements. These are two great ways to learn CSS without leaving the comfort of Sketch.</p>
+                        <p>This will fetch the latest version of the imagemin plugin, as well as automatically add it to your package.json using the previously discussed tilde version range. To finish things up we need to initialize the plugin from our Gruntfile.js:</p>
 
-                        <p>Links on leverage Sketch to familiarize yourself with CSS:</p>
+                        <pre><code class="language-javascript">module.exports = function(grunt) {
 
-                        <ul class="article__list">
-                            <li><a href="http://bohemiancoding.com/sketch/" target="_blank">Sketch</a></li>
-                            <li><a href="http://bohemiancoding.com/sketch/support/documentation/11-exporting/5-css.html" target="_blank">Export CSS Styles in Sketch</a></li>
-                            <li><a href="https://github.com/jodyheavener/CSS-Buddy" target="_blank">CSS Buddy for Sketch</a></li>
-                        </ul>
+  grunt.initConfig({
 
-                        <h3>Bonus: Prototype In Code</h3>
+    pkg: grunt.file.readJSON('package.json'),
 
-                        <p>I mentioned earlier about dynamic prototyping becoming a larger part of our workflow as designers. One of the leading tools for mobile prototyping is <a href="http://framerjs.com/" target="_blank">Framer.js</a>. Using a simplified syntax for JavaScript (<a href="http://framerjs.com/learn/coffeescript/">CoffeeScript</a>), we can code up fully interactive prototypes, complete with animations. A lot of designers I know have not gotten this far in their toolset, so now is a good time to add interaction prototyping to the mix, while also getting more familiar with JavaScript.</p>
+  });
 
-                        <p>Read more about using Framer.js:</p>
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-                        <ul class="article__list">
-                            <li><a href="http://framerjs.com/" target="_blank">Framer.js</a></li>
-                            <li><a href="http://framerjs.com/learn/coffeescript/">CoffeeScript for Framer</a></li>
-                        </ul>
+};</code></pre>
 
-                        <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/brian_lovin">@brian_lovin</a> The importance of needing to know code as a designer is seemingly directly proportional to the complexity of learning code.</p>&mdash; Brian Hough (@b_hough) <a href="https://twitter.com/b_hough/status/568651422041968640">February 20, 2015</a></blockquote>
+                        <p>This is the process you will follow for installing plugins going forward. Most plugins' documentation will include how to initiate the download from Node Package Manager (NPM), as well as the argument to pass ’loadNpmTasks’ to load the plugin. The next step is to configure the task. Each task in Grunt is configured as a JSON object within Gruntfile.js. Let's go through a basic configuration for imagemin:</p>
 
-                        <p class="closing-excerpt">The time problem is a hard one to solve. Whether you are a designer, a developer, or somewhere in between, the explosion of new tools has made finding time to learn anything new extremely difficult. However, if we can start out by replacing or enhancing parts of our workflows with these new code-based tools, we will have a good base, and some spare time, to develop our coding skills further.</p>
+                        <pre><code class="language-javascript">grunt.initConfig({
+  imagemin: {                          // Task
+    static: {                          // Target
+      options: {                       // Target options
+        optimizationLevel: 3
+      },
+      files: {                         // Dictionary of files
+        'dist/img.png': 'src/img.png', // 'destination': 'source'
+        'dist/img.jpg': 'src/img.jpg',
+        'dist/img.gif': 'src/img.gif'
+      }
+    }
+  }
+});</code></pre>
+
+                        <p>The main object for each task is usually the name of the plugin. The first child object is usually, but does not have to be, named after the target of the task. In this case we are calling it static. This is a great pattern to use, as you can run subtasks based on these child objects (ie. grunt imagemin.static). Next we, have two children: The first is ‘options’, which allows you the pass a configuration object. In this case, we are going to pass it an optimization level for our compressed images. Note this only affects the static subtask. Refer to each plugins documentation for a list of available options.</p>
+
+                        <p>The next element is a file matching pattern. This tells the plugin what images to modify. There are <a href="https://github.com/gruntjs/grunt/wiki/Configuring-tasks#files" target="_blank">several accepted formats</a> for this object. I prefer to use the <a href="https://github.com/gruntjs/grunt/wiki/Configuring-tasks#files-array-format" target="_blank">Files Array format</a>, as it allows you to declare several source locations per destination, while also allowing you to pass multiple mappings per object. In this example, we will pass it a couple specific images to optimize.</p>
+
+                        <p>Now we have enough to run our first Grunt task. Pull up your command line and run the following from your terminal:</p>
+
+                        <pre><code class="language-bash">grunt imagemin.static</code></pre>
+
+                        <p>You should now see some logs in terminal with the results of our optimizations, as well as new, compressed images in our destination folder. Now each time we run this command, Grunt will run a task that optimizes the images we pass in the file object. While this is not always the case, this particular plugin will cache what images it has optimized, and only optimize the ones that are new or changed.</p>
+
+                        <h2>Dynamic File Paths</h2>
+
+                        <p>Now that we have your first task out of the way, we'll work on making it more useful. In a practical application, you probably do not want to continually update a giant list of files to your JSON object just to optimize them. Instead, we can configure our task do this automatically:</p>
+
+                        <pre><code class="language-javascript">grunt.initConfig({
+  imagemin: {                          // Task
+    static: {                          // Target
+      options: {                       // Target options
+        optimizationLevel: 3
+      },
+      files: {                         // Dictionary of files
+        'dist/img.png': 'src/img.png', // 'destination': 'source'
+        'dist/img.jpg': 'src/img.jpg',
+        'dist/img.gif': 'src/img.gif'
+      }
+    },
+    dynamic: {                         // Another target
+      files: [{
+        expand: true,                  // Enable dynamic expansion
+        cwd: 'src/',                   // Src matches are relative to this path
+        src: ['src/**/*.{png,jpg,gif}'],   // Actual patterns to match
+        dest: 'dist/'                  // Destination path prefix
+      }]
+    }
+  }
+});
+</code></pre>
+
+                        <p>In our new ‘dynamic’ we are now using a slightly different file object format that allows us to pass in a couple new options. The ‘expand’ property tells a plugin whether or not dynamically expand your target list, which basically just means it will find every file within the source object you specify. This way, if you add a new folder or file, you will not have to update your source list manually. The ‘cwd’ property sets the root that all your file paths will be relative to. In this example, we are going to set it to our ‘src’ folder. Next, we pass our familiar ‘src’ property, this time using some wildcards. ‘**/*’ tells imagemin to target any file in any child folders. This combined with ‘expand’ being set to true will cover any new folders and files within src. We are also limiting it to only PNG, JPG, and GIF files. Lastly, we pass a destination like in our previous task. We only need to declare the root ‘dest’ folder, as Grunt will retain the paths and file structure of the source folder when it moves images over to our destination.</p>
+
+                        <p>Let's give this one a whirl by putting the following into terminal:</p>
+
+                        <pre><code class="language-bash">grunt imagemin.dynamic</code></pre>
+
+                        <p>Now any image we add in the ‘src’ folder will be optimized and placed in its relative location within the destination folder without us updating our file list.</p>
+
+                        <h2>Running Multiple Tasks</h2>
+
+                        <p>Grunt does not limit you to running just one task at a time. You can also run a series of tasks with a single command. To demonstrate this, we will continue working on our image optimization workflow. First, we will install our second plugin: <a href="https://npmjs.org/package/grunt-svg2png" target="_blank">SVG2PNG</a>. This plugin will convert any SVG you pass it, into a PNG to use as a fallback for older browsers. Follow what we covered above to install SVG2PNG into our project. Once that is done, add a new task object to our Gruntfile.js:</p>
+
+                        <pre><code class="language-javascript">svg2png: {
+        all: {
+            // specify files in array format with multiple src-dest mapping
+            files: [{
+                expand: true,                  // Enable dynamic expansion
+                cwd: 'src/',                   // Src matches are relative to this path
+                src: ['src/**/*.{svg}'],   // Actual patterns to match
+                dest: 'dist/'                  // Destination path prefix
+            }]
+        }
+    }</code></pre>
+
+                        <p>This should look very similar to how we handled image optimization. We have created a subtask called ‘all’ and are passing it a dynamic list of SVGs. Those are then converted and placed into a ‘png’ folder within the ‘src’ folder. Now we could just run this task like before, followed by our dynamic image optimization task to optimize the generated PNGs, but there is a quicker way. We'll accomplish that by creating a new section of our GruntFile.js and register our first custom task using the following at the bottom of our Grunt function:</p>
+
+                        <pre><code class="language-javascript">grunt.registerTask('process-images', ['svg2png.all', 'imagemin.dynamic']);</code></pre>
+
+                        <p>The registerTask method gets passed 2 arguments: The name of the new task, and an object containing the tasks you want it to run. The tasks are run in the order they appear in the array, and are blocking, meaning the second one will not start until the first one finishes. Now we can go to our terminal and run:</p>
+
+                        <pre><code class="language-bash">grunt process-images</code></pre>
+
+                        <p>This will first convert our SVGs in our source folder to PNGs, then will run our dynamic image optimization as before. You can see where this can really save some time. Now with a single command we convert and optimize all our image assets.</p>
+
+                        <h2>Running Tasks Automatically</h2>
+
+                        <p>While what we have up to this point is incredibly useful, we can take it one step further. Grunt has an incredibly useful plugin called <a href="https://npmjs.org/package/grunt-contrib-watch" target="_blank">Watch</a>. This plugin will monitor specific file/folder patterns and run tasks automatically when it detects changes. This is a great way to make sure we don't forget to run our tasks. Our first step is to install Watch into the project following the usual steps. Once that is done, we can add our new Watch task into our GruntFile.js:</p>
+
+                        <pre><code class="language-javascript">watch: {
+  images: {
+    files: ['**/*src'],
+    tasks: ['process-images'],
+  },
+},</code></pre>
+
+                        <p>We have created an images subtask and passed it folders to watch along with the tasks we want to run when Watch detects a change. Once this is done, head over to terminal and run:</p>
+
+                        <pre><code class="language-bash">grunt watch</code></pre>
+
+                        <p>You will now see a prompt that our Watch task is waiting. Now we simply make a change to any image in the ‘src’ folder, and the Watch task will trigger our custom image processing task in the background. As long as the Watch task is running, this will be done without any interaction from you!</p>
+
+                        <h2>Conclusion</h2>
+
+                        <p class="closing-excerpt">Hopefully this gives you some insight into how powerful Grunt tasks can be along with a solid foundation to start leveraging them in your workflow. Grunt can handle more than just images. Preprocessing, optimizations, file cleanup, cache-busting, there is a near endless list of way to leverage Grunt to streamline your workflow. Be sure to check out the <a href="http://gruntjs.com/plugins" target="_blank">plugin section</a> of the Grunt website to see what is possible.</p>
 
                     </div><!-- column -->
 
@@ -273,6 +382,8 @@
         </div><!-- wrapper -->
 
         <!-- Google Analytics -->
+
+        <script src="source/js/prism.js"></script>
 
         <script>
 
