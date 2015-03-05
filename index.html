@@ -8,14 +8,14 @@
     <link rel="canonical" href="http://lostinpixelation.com/" />
 
     <title>Lost In Pixelation</title>
-    <meta name="description" content="The world of front-end development has become a complicated place</a>. For years we were free to live a life free from the command prompt, from frameworks, from fancy build processes. HTML, CSS, and Javascript were our only friends. But over the last few years, our toolbox has expanded at a mind-blowing pace." />
+    <meta name="description" content="The world of front-end development has become a complicated place</a>. For years we were free to live a life free from the command prompt, from frameworks, from fancy build processes. HTML, CSS, and Javascript were our only friends. But over the last few years, our toolbox has expanded at a mind-blowing pace. " />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="public/favicons/favicon.png" />
 
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7082732/727286/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/main.2015030444.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/main.2015030332.css" />
 
 </head>
 
@@ -169,13 +169,13 @@
   }
 }</code></pre>
 
-                        <p>Package.json is a common paradigm for any Node related project. Anyone who wants to run your project, can install all the necessary dependencies by simply typing `npm install` from the directory where your package.json file is located. This makes setup a breeze. The file itself contains a simple JSON object with basic information about our project. ‘Name’ is just an identifier for your project, this can be whatever value you like. ‘Version’ is the version number of our particular project, which you can increment manually. Last, and most importantly, is the ‘devDependencies’ object. This contains all the required packages for our project.</p>
+                        <p>Package.json is a common paradigm for any Node related project. Anyone who wants to run your project, can install all the necessary dependencies by simply typing <code class="language-bash">npm install</code> from the directory where your package.json file is located. This makes setup a breeze. The file itself contains a simple JSON object with basic information about our project. <code class="language-bash">name</code> is just an identifier for your project, this can be whatever value you like. <code class="language-bash">Version</code> is the version number of our particular project, which you can increment manually. Last, and most importantly, is the <code class="language-bash">devDependencies</code> object. This contains all the required packages for our project.</p>
 
                         <p>The first dependency we will install is Grunt itself. We can install Grunt by heading back to the command line and running the following from our project root:</p>
     
                         <pre><code class="language-bash">npm install grunt </code></pre>
 
-                        <p>This will add the latest version of Grunt to your project. The`--save-dev` flag will add grunt to your dev dependencies. It is good to use this flag whenever adding a dependency to your project.</p>
+                        <p>This will add the latest version of Grunt to your project. The <code class="language-bash">--save-dev</code> flag will add grunt to your dev dependencies. It is good to use this flag whenever adding a dependency to your project.</p>
 
                         <pre><code class="language-javascript">{
   'name': 'my-project-name',
@@ -185,7 +185,7 @@
   }
 }</code></pre>
 
-                        <p>I mentioned in the beginning that you were not installing Grunt directly, but instead a CLI that runs Grunt. Each project you want to run Grunt with will have its own version. This is done to make code easier to maintain when Grunt updates, allowing you to upgrade Grunt on a per project basis. Another safeguard to ensure safe updating is  versioning notation. To avoid breaking changes, most dependencies are installed using a tilde version range. This restricts the automatic upgrading of packages to only minor versions, making upgrades to major release require a manual step. For example, a dependency with a version range of ~0.4.1 will upgrade automatically until 0.4.9, but would not automatically update to 0.5.0. This is handled automatically for you when a dependency is installed, but it is still good to know why it works this way.</p>
+                        <p>I mentioned in the beginning that you were not installing Grunt directly, but instead a CLI that runs Grunt. Each project you want to run Grunt with will have its own version. This is done to make code easier to maintain when Grunt updates, allowing you to upgrade Grunt on a per project basis. Another safeguard to ensure safe updating is  versioning notation. To avoid breaking changes, most dependencies are installed using a tilde version range. This restricts the automatic upgrading of packages to only minor versions, making upgrades to major release require a manual step. For example, a dependency with a version range of <code class="language-bash">~0.4.1</code> will upgrade automatically until 0.4.9, but would not automatically update to 0.5.0. This is handled automatically for you when a dependency is installed, but it is still good to know why it works this way.</p>
 
                         <p>For now, our Gruntfile.js file will remain very basic. All your tasks will be wrapped in a single Grunt function:</p>
 
@@ -227,7 +227,7 @@
 
 };</code></pre>
 
-                        <p>This is the process you will follow everytime you install a new plugin. Most documentation will include how to initiate the plugin download from Node Package Manager (NPM), as well as the argument to pass ’loadNpmTasks’ to load the plugin. The next step is to configure a task that leverages our new plugin. Here's what a basic configuration for imagemin looks like:</p>
+                        <p>This is the process you will follow everytime you install a new plugin. Most documentation will include how to initiate the plugin download from Node Package Manager (NPM), as well as the argument to pass <code class="language-bash">loadNpmTasks</code> to load the plugin. The next step is to configure a task that leverages our new plugin. Here's what a basic configuration for imagemin looks like:</p>
 
                         <pre><code class="language-javascript">grunt.initConfig({
   imagemin: {                          // Task
@@ -244,7 +244,7 @@
   }
 });</code></pre>
 
-                        <p>The parent object for each task is usually the name of the plugin. Your child objects are the names of the task. These can be whatever you like, in this case we are calling it 'static'. Next we have two more items: The first is ‘options’, which allows you the pass a configuration object. In this case, we are going to pass it an optimization level for our compressed images. Note this only affects the static subtask. Refer to each plugins documentation for a list of available options.</p>
+                        <p>The parent object for each task is usually the name of the plugin. Your child objects are the names of the task. These can be whatever you like, in this case we are calling it <code class="language-bash">static</code>. Next we have two more items: The first is <code class="language-bash">options</code>, which allows you the pass a configuration object. In this case, we are going to pass it an optimization level for our compressed images. Note this only affects the static subtask. Refer to each plugins documentation for a list of available options.</p>
 
                         <p>The next item is a file matching pattern. This tells the plugin what images to modify. There are <a href="https://github.com/gruntjs/grunt/wiki/Configuring-tasks#files" target="_blank">several accepted formats</a> for this. I prefer to use the <a href="https://github.com/gruntjs/grunt/wiki/Configuring-tasks#files-array-format" target="_blank">Files Array format</a>, as it allows you to declare several source locations per destination, while also allowing you to pass multiple mappings per object. In this example, we will pass it a couple specific images to optimize.</p>
 
@@ -282,13 +282,13 @@
 });
 </code></pre>
 
-                        <p>In our new ‘dynamic’ task we are now using a slightly different file object format that allows us to pass in a couple new options. The ‘expand’ property tells a plugin whether or not to dynamically expand your target list, which basically just means it will find every file within the source object you specify. This way, if you add a new folder or file, you will not have to update your source list manually. The ‘cwd’ property sets the root that all your file paths will be relative to. In this example, we are going to set it to our ‘/src’ folder. Next, we pass our familiar ‘src’ property, this time using some wildcards. ‘**/*’ tells imagemin to target any file in any child folders. This combined with ‘expand’ being set to true will cover any new folders and files within '/src'. We are also limiting it to only PNG, JPG, and GIF files. Lastly, we pass a destination as in our previous task. We only need to declare the root ‘dest’ folder, as Grunt will retain the paths and file structure of the source folder when it creates the new images.</p>
+                        <p>In our new <code class="language-bash">dynamic</code> task we are now using a slightly different file object format that allows us to pass in a couple new options. The <code class="language-bash">expand</code> property tells a plugin whether or not to dynamically expand your target list, which basically just means it will find every file within the source object you specify. This way, if you add a new folder or file, you will not have to update your source list manually. The <code class="language-bash">cwd</code> property sets the root that all your file paths will be relative to. In this example, we are going to set it to our <code class="language-bash">/src</code> folder. Next, we pass our familiar <code class="language-bash">src</code> property, this time using some wildcards. <code class="language-bash">**/*</code> tells imagemin to target any file in any child folders. This combined with <code class="language-bash">expand</code> being set to true will cover any new folders and files within <code class="language-bash">/src</code>. We are also limiting it to only PNG, JPG, and GIF files. Lastly, we pass a destination as in our previous task. We only need to declare the root <code class="language-bash">dest</code> folder, as Grunt will retain the paths and file structure of the source folder when it creates the new images.</p>
 
                         <p>Let's give this one a whirl by putting the following into terminal:</p>
 
                         <pre><code class="language-bash">grunt imagemin.dynamic</code></pre>
 
-                        <p>Now any image we add in the ‘src’ folder will be optimized and placed in its relative location within the destination folder.</p>
+                        <p>Now any image we add in the <code class="language-bash">/src</code> folder will be optimized and placed in its relative location within the destination folder.</p>
 
                         <h2>Running Multiple Tasks</h2>
 
@@ -306,15 +306,15 @@
         }
     }</code></pre>
 
-                        <p>This should look very similar to how we handled image optimization. We have created a subtask called ‘all’ and are passing it a dynamic list of SVGs. Those are then converted and placed into a ‘png’ folder within the ‘/dist’ folder. Now we  just run this task like before, followed by our dynamic image optimization task to optimize the generated PNGs, but there is a quicker way. To accomplish that, create a new section at the bottom of the GruntFile:</p>
+                        <p>This should look very similar to how we handled image optimization. We have created a subtask called <code class="language-bash">all</code> and are passing it a dynamic list of SVGs. Those are then converted and placed into a <code class="language-bash">/png</code> folder within the <code class="language-bash">/dist</code> folder. Now we  just run this task like before, followed by our dynamic image optimization task to optimize the generated PNGs, but there is a quicker way. To accomplish that, create a new section at the bottom of the GruntFile:</p>
 
                         <pre><code class="language-javascript">grunt.registerTask('process-images', ['svg2png.all', 'imagemin.dynamic']);</code></pre>
 
-                        <p>The `registerTask` method gets passed 2 arguments: The name of the new task, and an object containing the tasks you want it to run. The tasks are run in the order they appear in the array, and are blocking, meaning the second one will not start until the first one finishes. Now we can go to our terminal and run:</p>
+                        <p>The <code class="language-bash">registerTask</code> method gets passed 2 arguments: The name of the new task, and an object containing the tasks you want it to run. The tasks are run in the order they appear in the array, and are blocking, meaning the second one will not start until the first one finishes. Now we can go to our terminal and run:</p>
 
                         <pre><code class="language-bash">grunt process-images</code></pre>
 
-                        <p>This will first convert our SVGs in our `/src` folder to PNGs, then will run our dynamic image optimization as before. You can see where this can really save some time. Now with a single command we convert and optimize all our image assets.</p>
+                        <p>This will first convert our SVGs in our <code class="language-bash">/src</code> folder to PNGs, then will run our dynamic image optimization as before. You can see where this can really save some time. Now with a single command we convert and optimize all our image assets.</p>
 
                         <h2>Running Tasks Automatically</h2>
 
@@ -327,11 +327,11 @@
   },
 },</code></pre>
 
-                        <p>Watch contains child tasks that are run automatically when certain conditions are met. In this case the `images` will run our `process-images` task whenever it detects a change in our `/src` folder. Once this is done, head over to terminal and run:</p>
+                        <p>Watch contains child tasks that are run automatically when certain conditions are met. In this case  <code class="language-bash">image</code> will run our <code class="language-bash">process-images</code> task, whenever it detects a change in our <code class="language-bash">/src</code> folder. Once this is done, head over to terminal and run:</p>
 
                         <pre><code class="language-bash">grunt watch</code></pre>
 
-                        <p>You will now see a prompt that our Watch task is waiting. Now whenver we make a change to an image in the ‘src’ folder, the Watch task will trigger our custom image processing task automatically. As long as the Watch task is running, this will be done without any interaction!</p>
+                        <p>You will now see a prompt that our Watch task is waiting. Now whenver we make a change to an image in the <code class="language-bash">/src</code> folder, the Watch task will trigger our custom image processing task automatically. As long as the Watch task is running, this will be done without any interaction!</p>
 
                         <h2>Conclusion</h2>
 
