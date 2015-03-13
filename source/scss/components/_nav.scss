@@ -1,15 +1,6 @@
 .modal-trigger {
     position: absolute;
     clip: rect(0, 0, 0, 0);
-
-    &:checked ~ .nav {
-        opacity: 1;
-        transform: scaleY(1);
-    }
-
-    &:checked ~ .overlay {
-        opacity: 1;
-    }
 }
 
 .overlay {
@@ -23,6 +14,10 @@
     opacity: 0;
     transition: opacity 0.5s $swiftOut;
     pointer-events: none;
+
+    &.open {
+        opacity: 1;
+    }
 }
 
 .nav {
@@ -37,6 +32,11 @@
     perspective: 1000;
     transition: all 0.5s $swiftOut;
     transform: scaleY(0) translate3d(0, 0, 0);
+
+    &.open {
+        opacity: 1;
+        transform: scaleY(1);
+    }
 
     &__wrapper {
         position:  absolute;
