@@ -6,22 +6,25 @@
         margin-left: -10px;
         color: $black;
 
-        span {
-            padding: 0 15px;
-            background: $white;
-        }
-
-        @include media(phone) {
-            margin-top: 0;
-            margin-bottom:  0;
+        &--no-image {
             text-align: center;
-
-            span  {
-                background: transparent;
-            }
         }
 
+    span {
+        padding: 0 15px;
+        background: $white;
     }
+
+    @include media(phone) {
+        margin-top: 0;
+        margin-bottom:  0;
+        text-align: center;
+
+        span  {
+            background: transparent;
+        }
+    }
+ }
 
     .aside {
 
@@ -34,6 +37,14 @@
             font-weight: 400;
             text-transform: uppercase;
             color: $grey;
+
+            &--no-image {
+                @extend .aside__article-info;
+                display: block;
+                float: none;
+                margin: 0 auto 50px;
+                text-align: center;
+            }
 
             & > span {
                 color: $lightGrey;

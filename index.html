@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" href="public/favicons/favicon.png" />
 
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7082732/727286/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/main.2015030332.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/main.2015032814.css" />
 
 </head>
 
@@ -59,7 +59,7 @@
 
                         <li class="nav__menu__list-item">
 
-                            <span>04</span> <a href="/declarations-vs-expressions">Functions: Declarations vs. Expressions</a>
+                            <span>04</span> <a href="/declarations-vs-expressions">Declarations vs. Expressions</a>
 
                         </li><!--nav__menu__list-item -->
 
@@ -117,31 +117,15 @@
 
             <div class="row">
 
-                <div class="column-24 desktop-column-24 tablet-column-12 phone-column-6">
+                <div class="prepend-4 column-16 desktop-prepend-4 desktop-column-16 tablet-column-12 phone-column-6">
 
-                    <picture class="article__header-image" data-alt="Grunt Work" data-default-src="/public/img/article-img/grunt-work-large.jpg">
-                        <source media="(min-width: 1440px)" srcset="/public/img/article-img/grunt-work-large.jpg 2513w">
-                            <source media="(min-width: 800px)" srcset="/public/img/article-img/grunt-work-medium.jpg 1257w">
-                                <source media="(max-width: 600px)" srcset="/public/img/article-img/grunt-work-small.jpg 628w">
-                                    <source srcset="/public/img/article-img/grunt-work-large.jpg">
-                                        <img src="/public/img/article-img/grunt-work-large.jpg" alt="Grunt Work">
-                                    </picture>
-
-                </div><!-- column -->
-
-            </div><!-- row -->
-
-            <div class="row">
-
-                <div class="prepend-1 column-17 desktop-prepend-1 desktop-column-17 tablet-column-8 phone-column-6">
-
-                <h1 class="article__headline"><span>Function Expressions vs. Function Declarations </span></h1>
+                <h1 class="article__headline--no-image"><span>Declarations vs. Expressions</span></h1>
 
                </div><!-- column -->
 
-                <aside class="aside column-6 desktop-column-6 tablet-column-4 phone-column-6">
+                <aside class="aside column-24 desktop-column-24 tablet-column-12 phone-column-6">
 
-                    <span class="aside__article-info">Volume 1 <span>|</span> Article 4 <span>|</span> March 30, 2015</span>
+                    <span class="aside__article-info--no-image">Volume 1 <span>|</span> Article 4 <span>|</span> March 30, 2015</span>
 
                 </aside><!-- aside -->
 
@@ -151,7 +135,7 @@
 
                      <div class="prepend-6 column-12 append-6  desktop-prepend-6 desktop-column-12 desktop-append-6 tablet-prepend-1 tablet-column-10 tablet-append-1 phone-column-6 ">
 
-                        <p class="opening-excerpt">When first learning JavaScript, we all encountered those puzzling behaviors of the language that we didn't quite understand. We weren't sure *why* it worked the way it did, but it <strong>did</strong> work and that was enough for us. This is a common scenario for new and seasoned JavaScript developers alike. It is far easier to chalk it up to JavaScript being a <a href="http://javascript.crockford.com/javascript.html" target="_blank">quirky</a>] language, than it is to understand what is truly going on under the hood. This year I made the decision to stop being one of those developers, and instead to really understand not just how to do things in JavaScript, but <strong>why</strong> they work the way they do. This series of posts will follow me on my journey to deeply understand the language so many love to hate.</p>
+                        <p class="opening-excerpt">When first learning JavaScript, we all encountered those puzzling behaviors of the language that we didn't quite understand. We weren't sure why it worked the way it did, but it <strong>did</strong> work and that was enough for us. This is a common scenario for new and seasoned JavaScript developers alike. It is far easier to chalk it up to JavaScript being a <a href="http://javascript.crockford.com/javascript.html" target="_blank">quirky</a> language, than it is to understand what is truly going on under the hood. This year I made the decision to stop being one of those developers, and instead to really understand not just how to do things in JavaScript, but why they work the way they do. This series of posts will follow me on my journey to deeply understand the language so many love to hate.</p>
 
                         <p>Creating functions is at the core of writing JavaScript. You can't really write useful JS without them. However, when I sat down to write this post, I was not prepared for the rabbit hole something as simple as defining a function could be to understand in depth. JavaScript offers two main ways of defining a new function (there are a few lesser used ways we won't touch in this article): The Function Expression and the Function Declaration. By the end of this post, I hope to provide a better understanding of how each differs, their caveats, and when we should use them.</p>
 
@@ -160,161 +144,138 @@
                         <p>Function Expressions occur when a function is defined as part of a statement:</p>
 
                         <pre><code class="language-javascript">var a = function() {
-                            return 'Hello World';
-                        };
-                        </code></pre>
+    return 'Hello World';
+};
+</code></pre>
 
                         <p>Simple enough. However, it doesn't need to be assigned to a variable to be a Function Expression. The <code class="language-javascript">function</code> keyword simply can not be the first element of the statement:</p>
 
                         <pre><code class="language-javascript">(function() {
-
-                            return 'Hello World';
-
-                        })();
-                        </code></pre>
+    return 'Hello World';
+})();
+</code></pre>
 
                         <p>The wrapping <code class="language-javascript">()</code> makes the function keyword part of a statement, and thus a Function Expresson.</p>
 
                         <p>When a Function Expression is assigned to a variable, that variable stores a reference to the function object. For example, <code class="language-javascript">a</code> in the below code stores a reference to the anonymous function. When you invoke the function the result should be obvious:</p>
 
                         <pre><code class="language-javascript">var a = function() {
-                            return 'Hello World'
-                        };
-
-                        a(); // returns 'Hello World'
-                        </code></pre>
+    return 'Hello World'
+};
+a(); // returns 'Hello World'
+</code></pre>
 
                         <p>You can also write a function expression that stores a reference to a named function, referred to as a Named Function Expression.</p>
 
                         <pre><code class="language-javascript">var a = function helloWorld() {
-                            return 'Hello World';
-                        };
-
-                        a(); // returns 'Hello World'
-                        </code></pre>
+    return 'Hello World';
+};
+a(); // returns 'Hello World'
+</code></pre>
 
                         <p>This is where we run into our first gotcha with Function Expressions. While we can continue to invoke the named function by the variable that references it, we can not invoke it outside of that expression using its name:</p>
 
                         <pre><code class="language-javascript">var a = function helloWorld() {
-                            return 'Hello World';
-                        };
-
-                        a(); // returns 'Hello World'
-
-                        helloWorld(); // TypeError
-                        </code></pre>
+    return 'Hello World';
+};
+a(); // returns 'Hello World'
+helloWorld(); // TypeError
+</code></pre>
 
                         <p>However, we can invoke it recursively(meaning from inside of its own scope):</p>
 
                         <pre><code class="language-javascript">var a = function helloWorld() {
-                            return typeof helloWorld; // function
-                        };
-
-                        a(); // function
-                        </code></pre>
+    return typeof helloWorld; // function
+};
+a(); // function
+</code></pre>
 
                         <p>This is due to how hoisting affects Function Expressions. In the above code, <code class="language-javascript">helloWorld();</code> is referenced within it's own scope without issue, but it returns a <code class="language-javascript">TypeError</code> when invoked outside of it's own scope. To understand why this is, it helps to see how this code is interpreted:</p>
 
                         <pre><code class="language-javascript">var a;
-                        var helloWorld;
-
-                        a = function() {
-                            helloWorld = function() {
-
-                                return typeof this;
-                            
-                            };
-                        };
-                        </code></pre>
+var helloWorld;
+a = function() {
+    helloWorld = function() {
+        return typeof this;
+    };
+};
+</code></pre>
 
                         <p>The declaration side of variable assignments are hoisted to the top of the scope, initializing with a value of <code class="language-javascript">undefined</code>. <code class="language-javascript">helloWorld</code> is assigned a reference to a function within the scope of <code class="language-javascript">a</code>. This is what allows it to reference itself inside of <code class="language-javascript">a</code>. When you try to invoke it outside of <code class="language-javascript">a</code>'s scope we end up with a <code class="language-javascript">TypeError</code> since <code class="language-javascript">helloWorld</code> evaluates to <code class="language-javascript">undefined</code> in the outer scope.</p>
 
                         <p>This same hoisting behavior also effects Function Expressions in another important way:</p>
 
                         <pre><code class="language-javascript">a(); // TypeError
-
-                        var a = function() {
-                            return 'Hello World';
-                        };
-                        </code></pre>
+var a = function() {
+    return 'Hello World';
+};
+</code></pre>
 
                         <p>The reasons for the <code class="language-javascript">TypeError</code> should be clearer given what we observed in the previous example. The variable declaration is hoisted to the top of its scope, but the assignment is not. This is often referred to as the function being processed at parse-time (when the interpreter gets to that block of code). This code is interpreted as:</p>
 
                         <pre><code class="language-javascript">var a;
-
-                        a(); // TypeError
-
-                        a = function() {
-                            return 'Hello World';
-                        };
-                        </code></pre>
+a(); // TypeError
+a = function() {
+    return 'Hello World';
+};
+</code></pre>
 
                         <p>This means that you can not invoke a function expression before it has been assigned, as it will always return a <code class="language-javascript">TypeError</code>. The hoisting of the declaration is why we get a <code class="language-javascript">TypeError</code> as opposed to <code class="language-javascript">ReferenceError</code> when we try to invoke <code class="language-javascript">a</code> before the assignment.</p>
 
                         <p>But things aren't all bad on the Function Expression front, they do give us some great capabilities. The most useful of which is a pattern you have probably seen used many times before:</p>
 
                         <pre><code class="language-javascript">(function() {
+    return 'Hello World'
+})(); // returns 'Hello World'
+</code></pre>
 
-                            return 'Hello World'
-
-                        })(); // returns 'Hello World'
-                        </code></pre>
-
-                        <p>This pattern is referred to as an Immediately Invoked Function Expression(IIFE) or sometimes misleading referred to as a <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/" target="_blank">Self-Executing Anonymous Function</a>. There are actually a few features of Function Expressions at play here. First of which is why this is even an an expression at all. Earlier we defined a Function Expression as a function defined as part of a statement. While assigning the function to a variable is the most common way, wrapping it in the extra <code class="language-javascript">()</code> creates a statement as well, turning this into a Function Expression.</p>
+                        <p>This pattern is referred to as an Immediately Invoked Function Expression(IIFE) or sometimes  <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/" target="_blank">misleading referred to as a Self-Executing Anonymous Function</a>. There are actually a few features of Function Expressions at play here. First of which is why this is even an an expression at all. Earlier we defined a Function Expression as a function defined as part of a statement. While assigning the function to a variable is the most common way, wrapping it in the extra <code class="language-javascript">()</code> creates a statement as well, turning this into a Function Expression.</p>
 
                         <p>The second behavior at play is that a Function Expression can be invoked when it is assigned. By ending the Function Expression with <code class="language-javascript">();</code>, the function is executed immediately when it is parsed. Another example would look something like this:</p>
 
                         <pre><code class="language-javascript">var a = function() {
-                            console.log('Hello World');
-                        }(); // Logs out 'Hello World'
-
-                        a; // undefined
-                        a(); // TypeError
-                        </code></pre>
+    console.log('Hello World');
+}(); // Logs out 'Hello World'
+a; // undefined
+a(); // TypeError
+</code></pre>
 
                         <p>While this approach accomplishes our goal of invoking the function immediately, it does demonstrate some seemingly odd behavior. <code class="language-javascript">a</code> evaluates to <code class="language-javascript">undefined</code> causing <code class="language-javascript">a();</code> to give us that pesky <code class="language-javascript">TypeError</code> again. This is because when we invoke a function at the same time we assign it to a variable, the variable, <code class="language-javascript">a</code> in our example, actually references what the function returns as opposed to the function itself. Since our above function doesn't return a value we get <code class="language-javascript">undefined</code> back instead. Let's see what it looks like with a function that returns a value:</p>
 
                         <pre><code class="language-javascript">var a = function() {
-                            return Hello World;
-                        }(); //returns 'Hello World';
-
-                        a; // returns 'Hello World';
-                        a(); // TypeError
-                        </code></pre>
+    return Hello World;
+}(); //returns 'Hello World';
+a; // returns 'Hello World';
+a(); // TypeError
+</code></pre>
 
                         <p>Your probably asking: &lsquo;Is there a way to both immediately invoke a function and reference it for later as well?&rsquo; The answer is technically, yes:</p>
 
                         <pre><code class="language-javascript">var a;
-                        (a = function() {
-                            console.log('Hello World');
-                        })(); // Logs 'Hello World'
-
-                        a(); // Logs 'Hello World'
-                        </code></pre>
+(a = function() {
+    console.log('Hello World');
+})(); // Logs 'Hello World'
+a(); // Logs 'Hello World'
+</code></pre>
 
                         <p>The reason I bring this up, is to help us avoid using this approach. This is poor JavaScript grammar, and as such, most linters will yell if we use it. If we want to invoke a named function we should explicity do so after our assignment. That approach makes it a lot simpler to derive what is going on from reading the code.</p>
 
                         <p>Hopefully, that tangent gives us an idea of what is happening behind the scenes when you immediately invoke a function. Another important note about IIFEs in particular, and why Self-Executing Anonymous Function is misleading, is that they don't actually have to be anonymous:</p>
 
                         <pre><code class="language-javascript">(function helloWorld() {
-
-                            return 'Hello World'
-                            typeof helloWorld; // function
-
-                        })(); // returns 'Hello World'
-                        </code></pre>
+    return 'Hello World';
+    typeof helloWorld; // function
+})(); // returns 'Hello World'
+</code></pre>
 
                         <p>This effectively is an immediately invoked Named Function Expression:</p>
 
                         <pre><code class="language-javascript">var a = function helloWorld() {
-
-                            return 'Hello World'
-                            typeof helloWorld; // function
-
-                        })(); // returns 'Hello World'
-
-                        a; // returns 'Hello World'
-                        </code></pre>
+    return 'Hello World';
+    typeof helloWorld; // function
+})(); // returns 'Hello World'
+a; // returns 'Hello World'
+</code></pre>
 
                         <p>Now that we have a good understanding of Function Expressions, contrasting them with Funtion Declarations will be a much easier task.</p>
 
@@ -323,61 +284,57 @@
                         <p>A Function Declaration is when a function is defined using the <code class="language-javascript">function</code> keyword as the first element of a statement:</p>
 
                         <pre><code class="language-javascript">function helloWorld() {
-                            return 'Hello World';
-                        } ;
-                        </code></pre>
+    return 'Hello World';
+};
+</code></pre>
 
                         <p>As we saw above anything before the <code class="language-javascript">function</code> keyword will turn it into a Function Expression.</p>
 
                         <p>Function Declarations also must always be a named function. Any attempt to make them anonymous will return a <code class="language-javascript">SyntaxError</code>:</p>
 
                         <pre><code class="language-javascript">function() {
-                            return 'Hello World';
-                        } // SyntaxError: Unexpected token (
-                        </code></pre>
+    return 'Hello World';
+};// SyntaxError: Unexpected token (
+</code></pre>
 
                         <p>Function Declarations can be invoked by name, even outside of their own scope:</p>
 
                         <pre><code class="language-javascript">function helloWorld() {
-                            return 'Hello World';
-                        } ;
-
-                        helloWorld(); // returns 'Hello World'
-                        </code></pre>
+    return 'Hello World';
+} ;
+helloWorld(); // returns 'Hello World'
+</code></pre>
 
                         <p>In fact, this is the only way to invoke a Function Declaration, as they can not be invoked upon assignment:</p>
 
                         <pre><code class="language-javascript">function helloWorld() {
-                            return 'Hello World';
-                        }(); // SyntaxError: Unexpected token )
-                        </code></pre>
+    return 'Hello World';
+}(); // SyntaxError: Unexpected token )
+</code></pre>
 
                         <p>Function Declarations have an advantage here as not only can you reference the named function via recursion, but unlike Function Expressions, Function Declarations can be referenced by name from outside of their own scope:</p>
 
                         <pre><code class="language-javascript">function helloWorld() {
-                            return typeof helloWorld;
-                        };
-
-                        helloWorld() // returns function
-                        </code></pre>
+    return typeof helloWorld;
+};
+helloWorld(); // returns function
+</code></pre>
 
                         <p>This is possible because of the most important differentiator of Function Declarations; how they are affected by hoisting. The entire Function Declaration is hoisted to the top of the scope, since there is actually no assignment. This behavior is also referred to as the Function Declaration being processed at run-time.</p>
 
                         <pre><code class="language-javascript">helloWorld(); // returns 'Hello World'
-
-                        function helloWorld() {
-                            return 'Hello World';
-                        } ;
-                        </code></pre>
+function helloWorld() {
+    return 'Hello World';
+};
+</code></pre>
 
                         <p>Which is interpreted as essentially the inverse:</p>
 
                         <pre><code class="language-javascript">function helloWorld() {
-                            return 'Hello World';
-                        } ;
-
-                        helloWorld(); // returns 'Hello World'
-                        </code></pre>
+    return 'Hello World';
+};
+helloWorld(); // returns 'Hello World'
+</code></pre>
 
                         <p>Yes, this means you can actually invoke the function in our code before it is declared. A seemingly powerful behavior, but one we may want to avoid. More on this in a moment&hellip;</p>
 
@@ -399,53 +356,45 @@
                         <p>Object Oriented Javascript will often have us creating methods on objects. Depending on our specific use case, we might find one syntax preferable over the other. In some cases, like creating singleton-like methods, we might choose to use an Expression for cleaner code:</p>
 
                         <pre><code class="language-javascript">// Using Expression
-                        var global = {};
-
-                        var global.log = function() {
-                            console.log('Hello World');
-                        };
-                        </code></pre>
+var global = {};
+var global.log = function() {
+    console.log('Hello World');
+};
+</code></pre>
 
                         <p>Versus using a Declaration:</p>
 
                         <pre><code class="language-javascript">// Using Declaration
-                        var global = {};
-
-                        function helloWorld(msg){
-                            console.log(msg);
-                        };
-
-                        var global.log = helloWorld;
-                        </code></pre>
+var global = {};
+function helloWorld(msg){
+    console.log(msg);
+};
+var global.log = helloWorld;
+</code></pre>
 
                         <p>However, if we want to reuse a function as a method on multiple objects, a Function Declaration seems more readable:</p>
 
                         <pre><code class="language-javascript">// Using Declaration
-                        var global1 = {};
-                        var global2 = {};
-
-                        function helloWorld(msg){
-                            console.log(msg);
-                        };
-
-                        var global1.log = helloWorld;
-                        var global2.log = helloWorld;
-                        </code></pre>
+var global1 = {};
+var global2 = {};
+function helloWorld(msg){
+    console.log(msg);
+};
+var global1.log = helloWorld;
+var global2.log = helloWorld;
+</code></pre>
 
                         <p>Versus using an Expression:</p>
 
                         <pre><code class="language-javascript">// Using Expression
-
-                        var global1 = {};
-                        var global2 = {};
-
-                        var helloWorld = function helloWorld(){
-                            console.log('Hello World');
-                        };
-
-                        var global1.log = helloWorld;
-                        var global2.log = helloWorld;
-                        </code></pre>
+var global1 = {};
+var global2 = {};
+var helloWorld = function helloWorld(){
+    console.log('Hello World');
+};
+var global1.log = helloWorld;
+var global2.log = helloWorld;
+</code></pre>
 
                         <h2>Conclusion</h2>
                         <p>As you can see, the answer is not straightforward. In some cases it is clear which syntax we should use. Which one you pick won't matter in most cases, but some times there will be a better option. What we now have is the information needed to decide which is the best choice for each scenario, and that is a big step in the right direction.</p>
