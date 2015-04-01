@@ -152,6 +152,31 @@
 
 }
 
+.github-button {
+    display: block;
+    width: 238px;
+    border: 2px solid $black;
+    padding: 10px 12px;
+    margin: 0 auto;
+    font-family: 'Tungsten A', 'Tungsten B'; 
+    font-size: 1.6rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $black;
+    transition:  all .3s $swiftOut;
+
+    &:hover {
+        background: $black;
+        color: $white;
+    }
+
+    &.ss-octocat:before {
+        position: relative;
+        top: 6px;
+        margin-right: 10px;
+    }
+}
+
 .twitter-tweet {
     margin: 0 auto 1.66rem !important;
 }
