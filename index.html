@@ -8,14 +8,14 @@
     <link rel="canonical" href="http://lostinpixelation.com/" />
 
     <title>Lost In Pixelation</title>
-    <meta name="description" content="My aim with Fibre was to create a lightweight scaffolding that allowed you to jump straight into coding." />
+    <meta name="description" content="If your goal is concise semantic class names, there needs to be a better way. The answer lies in CSS3 attribute selectors." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="public/favicons/favicon.png" />
 
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7082732/727286/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/main.2015033113.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/main.2015042058.css" />
 
 </head>
 
@@ -60,6 +60,12 @@
                         <li class="nav__menu__list-item">
 
                             <span>04</span> <a href="/introducing-fibre">Introducing Fibre</a>
+
+                        </li><!--nav__menu__list-item -->
+
+                    <li class="nav__menu__list-item">
+
+                            <span>05</span> <a href="/better-class-name-construction">Better Class Name Construction</a>
 
                         </li><!--nav__menu__list-item -->
 
@@ -119,13 +125,13 @@
 
                 <div class="prepend-4 column-16 desktop-prepend-4 desktop-column-16 tablet-column-12 phone-column-6">
 
-                <h1 class="article__headline--no-image"><span>Introducing Fibre</span></h1>
+                <h1 class="article__headline--no-image"><span>Better Class Name Construction</span></h1>
 
                </div><!-- column -->
 
                 <aside class="aside column-24 desktop-column-24 tablet-column-12 phone-column-6">
 
-                    <span class="aside__article-info--no-image">Volume 1 <span>|</span> Article 4 <span>|</span> March 31, 2015</span>
+                    <span class="aside__article-info--no-image">Volume 1 <span>|</span> Article 5 <span>|</span> April 20, 2015</span>
 
                 </aside><!-- aside -->
 
@@ -135,13 +141,96 @@
 
                      <div class="prepend-6 column-12 append-6  desktop-prepend-6 desktop-column-12 desktop-append-6 tablet-prepend-1 tablet-column-10 tablet-append-1 phone-column-6 ">
 
-                        <p class="opening-excerpt">Front-end technology is growing at a never before seen pace, making the front-end stack <a href="http://lostinpixelation.com/designing-code" target="_blank">more and more complicated</a>. Development is no longer as simple as a text editor and an FTP client, and that necessitates new tools. Managing our tools takes almost as much time as utilizing them.</p>
+                        <p class="opening-excerpt">CSS Frameworks are common place these days. They provide us the ability to construct complex, varied UI elements with a relatively small amount of CSS. This approach has been because it provides you the ability to start with base styles for an element, and then add or remove complexity as needed. Let's look at a couple examples from some popular UI Frameworks:</p>
 
-                        <p>Task runners like <a href="http://gulpjs.com/" target="_blank">Gulp</a> were created to solve this problem, but they take a decent amount of configuration to get up and running. They can also be intimidating for beginners and people who don't want to learn yet another tool. Even once you learn them, having to set them up for every project can be tiresome at best.</p>
+                        <pre><code class="language-markup">//Bootstrap Buttons
+&lt;button type="button" class="btn btn-primary btn-lg">Submit&lt;/button>
 
-                        <p>My aim with Fibre was to create a lightweight scaffolding that allowed you to jump straight into coding. Creating recipes for common web development tasks, Fibre's aim is to be a lightweight scaffolding that enables you to jump straight into coding while still benefitting from the workflow improvements that Gulp can provide. Fibre covers common front-end tasks including image optimization, CSS pre-processing with SCSS and Autoprefixer, JS Module Loading with Browserify, and much more.</p>
+//PureCSS Buttons
+&lt;button type="button" class="pure-button pure-button-primary">Submit&lt;/button></code></pre>
 
-                        <p class="closing-excerpt">You can read more about everything Fibre offers in the <a href="https://github.com/bhough/fibre/blob/master/README.md" target="_blank">documentation</a>, or you can get started by visiting the <a href="https://github.com/bhough/fibre" target="_blank">repo on GitHub</a>. Happy coding!</p>
+                        <p>Where the OCD among us run into a problem is that we often end up with very convoluted, redundant class names in our markup. While there is nothing necessarily wrong with this approach, if your goal is concise semantic class names, there needs to be a better way. How can we get the same extensibility that these frameworks provide without creating complex class lists? The answer lies in CSS3 attribute selectors.</p>
+
+                        <h2>Attribute Selectors</h2>
+
+                        <p>CSS attribute selectors provide the ability to match styles with the value of specific attributes on a DOM element. CSS3 added the ability to further refine these matches, most powerfully with the wildcard modifier. By appending `*` to your attribute selector, you can match element in the attribute list that contains a specific string. By leveraging this functionality, we can replicate the functionality of these frameworks, but with much more concise class names.</p>
+
+                        <p>Let's recreate our button examples above using this approach:</p>
+
+                        <h3>Bootstrap</h3>
+
+                        <pre><code class="language-scss">[class*="btn"] {
+  
+  // base button styles
+  
+  &[class*="primary"] {
+
+    // primary button styles
+
+  }
+
+  &[class*="lg"] {
+
+    // large button styles
+  
+  }
+
+}</code></pre>
+
+<h3>PureCSS</h3>
+
+<pre><code class="language-scss">[class*="pure-button"] {
+  
+  // base button styles
+  
+  &[class*="primary"] {
+
+    // primary button styles
+
+  }
+
+}</code></pre>
+
+                        <p>Now our markup will look like this:</p>
+
+                        <pre><code class="language-markup">&lt;button class="btn-primary-lg" href="/">Submit&lt;/a>
+&lt;button type="button" class="pure-button-primary">Submit&lt;/button></code></pre>
+
+                        <p>This gives us the exact same functionality as the way Bootstrap or PureCSS does it, but with much neater, semantic class names. <a href="http://caniuse.com/#feat=css-sel3" target="_blank">Browser support is also pretty great</a>, only excluding IE8 and earlier.</p>
+
+                        <p>We don't have to only use this approach to improve our class names from frameworks. We can also use it with our own styles. This approach works especially well if you are following an object-oriented approach to your CSS, like BEM:</p>
+
+                        <pre><code class="language-scss">.form {
+
+  &[class*="button"] {
+    
+    // base button styles
+    
+    &[class*="primary"] {
+  
+      // primary button styles
+  
+    }
+  
+    &[class*="large"] {
+  
+      // large button styles
+    
+    }
+  
+  }
+  
+}</code></pre>
+
+                        <p>These styles would allow us to combine our button styles a variety of ways while still maintaining good BEM syntax:</p>
+
+                        <pre><code class="language-markup">&lt;button type="button" class="form__button-primary--large">Submit&lt;/button>
+&lt;button type="button" class="form__button--large">Submit&lt;/button>
+&lt;button type="button" class="form__button--primary">Submit&lt;/button></code></pre>
+
+                        <p>This gives us the power of a flat, object-oriented class structure, without sacrificing the flexibility of being able to construct complex UI elements. Over the last year, we have used this approach at Piqora in our internal CSS frameworks to great effect. It has not only made our class names cleaner, but it has also made our SASS files much easier to scan when looking for specific styles we need to extend or modify.</p>
+
+                        <p class="closing-excerpt">How do you feel about using complex class lists to style your UI elements? Have you come up with a better solution for reusable UI modules? I'd love to <a href="http://twitter.com/b_hough" target="_blank">hear about it</a>.</p>
 
                         <a class="github-button ss-octocat" href="https://github.com/bhough/fibre" target="_blank">View On Github</a>
 
@@ -186,8 +275,6 @@
             </div><!-- row -->
 
         </div><!-- wrapper -->
-
-        <!-- Google Analytics -->
 
         <script src="source/js/prism.js"></script>
 
